@@ -1,0 +1,28 @@
+<section class="form">
+  <div class="three-element-row">
+    <span class="p-float-label">
+      <input id="float-input" type="text" pInputText> 
+      <label for="float-input">Palavra-chave</label>
+    </span>
+    <span class="p-float-label">
+      <input id="float-input" type="text" pInputText> 
+      <label for="float-input">Lingua</label>
+    </span>
+    <span class="p-float-label">
+      <input id="float-input" type="text" pInputText> 
+      <label for="float-input">Limite de tweets analisados</label>
+    </span>
+  </div>
+  
+  <div class="three-element-row">
+    <span class="p-float-label">
+      <p-inputMask [(ngModel)]="val" mask="9999-99-99"></p-inputMask>
+      <label for="float-input">De:</label>
+    </span>
+    <span class="p-float-label">
+      <p-inputMask [(ngModel)]="val" mask="9999-99-99"></p-inputMask>
+      <label for="float-input">Até:</label>
+    </span>
+    <p-button label="Analisar" ></p-button>
+  </div>
+</section>
