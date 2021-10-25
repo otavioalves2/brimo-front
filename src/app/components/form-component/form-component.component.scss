@@ -1,0 +1,12 @@
+.form{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.three-element-row{
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  flex-direction: column;
+}

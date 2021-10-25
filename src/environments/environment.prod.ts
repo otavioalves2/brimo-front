@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  root: 'http://http://brimo.herokuapp.com/',
+  root: 'http://brimo.herokuapp.com',
 };

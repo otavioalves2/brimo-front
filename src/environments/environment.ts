@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  root: 'http://http://brimo.herokuapp.com/',
+  root: 'http://brimo.herokuapp.com',
 };
 
 /*
