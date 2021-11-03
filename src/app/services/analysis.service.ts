@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, filter, repeatWhen, take } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -30,7 +30,14 @@ export class AnalysisService {
     return this.http.post(`${environment.root}/classify`, requestObj)
       .pipe(
         map(response => {
-          return response;
+          return this.http.get(`${environment.root}/status/${JSON.parse(JSON.stringify(response)).task_id}`)
+          .pipe(
+            repeatWhen(obs => obs),
+            filter(data => 
+              JSON.parse(JSON.stringify(data)).state === "SUCCESS"
+              ),
+            take(1)
+          )
         }),
         catchError(e => {
           return throwError(e);
