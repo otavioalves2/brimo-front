@@ -1,0 +1,35 @@
+<section class="form">
+  <section>
+    <span class="p-float-label">
+      <input id="keyword" [(ngModel)]="keyword" type="text" pInputText> 
+      <label for="keyword">Palavra-chave</label>
+    </span>
+    <section class="two-buttons-row">
+      <p-button (click)="submitForTweetAnalysis()" label="Analisar" ></p-button>
+      <p-button label="Avançado" ></p-button>
+    </section>
+    <!-- <span class="p-float-label">
+      <input id="language" [(ngModel)]="language" type="text" pInputText> 
+      <label for="language">Lingua</label>
+    </span>
+    <span class="p-float-label">
+      <input id="limit" [(ngModel)]="limit" type="text" pInputText> 
+      <label for="limit">Limite de tweets analisados</label>
+    </span> -->
+  </section>
+  
+  <section class="three-buttons-row">
+    <!-- <span class="p-float-label">
+      <p-inputMask inputId="since" [(ngModel)]="since" mask="9999-99-99"></p-inputMask>
+      <label for="since">De:</label>
+    </span>
+    <span class="p-float-label">
+      <p-inputMask inputId="until" [(ngModel)]="until" mask="9999-99-99"></p-inputMask>
+      <label for="until">Até:</label>
+    </span> -->
+    <button pButton type="button" (click)="lowLimit()" icon="pi pi-angle-down" class="p-button-raised p-button-rounded"></button>
+    <button pButton type="button" (click)="mediumLimit()" icon="pi pi-angle-up" class="p-button-raised p-button-rounded"></button>
+    <button pButton type="button" (click)="highLimit()" icon="pi pi-angle-double-up" class="p-button-raised p-button-rounded"></button>
+  </section>
+  <textarea pInputTextarea [(ngModel)]="result" [disabled]="true" [autoResize]="true"></textarea>
+</section>
