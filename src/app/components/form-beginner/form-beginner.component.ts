@@ -13,6 +13,8 @@ export class FormBeginnerComponent implements OnInit {
   since: string = "2021-11-01";
   until: string = "2021-11-02";
 
+  advanced: boolean = false;
+
   result: string = "Placeholder para mostrar o resultado da request";
   constructor(private analysisService: AnalysisService) { }
 

@@ -1,0 +1,1000 @@
+ 1004  git tag -a rc5-v1.11.0 -m "Bug fixing exceto"
+ 1005  git push origin rc5-v1.11.0 
+ 1006  git status
+ 1007  git checkout -b FE-8z1gwj
+ 1008  git push --set-upstream origin FE-8z1gwj 
+ 1009  cd v360-dashboard-frontend/
+ 1010  npm run start
+ 1011  cd ..
+ 1012  cd v360-dashboard-frontend/
+ 1013  git status
+ 1014  git checkout development 
+ 1015  git pull
+ 1016  git checkout -b FE-a74dd3
+ 1017  git push --set-upstream origin FE-a74dd3 
+ 1018  git checkout development 
+ 1019  git pull
+ 1020  git tag -a rc6-v1.11.0 -m "Ajustados bugs mais relevantes do Sentry"
+ 1021  git push origin rc6-v1.11.0 
+ 1022  cd git/plataforma/v360-dashboard-backend/
+ 1023  git status
+ 1024  . code
+ 1025  code .
+ 1026  python3 app.py 
+ 1027  python3.9 app.py 
+ 1028  python3 app.py 
+ 1029  CD
+ 1030  cd
+ 1031  python3 --version
+ 1032  sudo apt update 
+ 1033  sudo apt install software-properties-common
+ 1034  sudo add-apt-repository ppa:deadsnakes/ppa
+ 1035  sudo apt install python3.9
+ 1036  python3.9 --version
+ 1037  python3 --version
+ 1038  docker ps
+ 1039  cd twint/
+ 1040  python3 twintests.py 
+ 1041  cd v360-dashboard-frontend/
+ 1042  npm run start
+ 1043  cd v360-dashboard-frontend/
+ 1044  npm run start
+ 1045  cd git/plataforma/v360-dashboard-frontend/
+ 1046  git status
+ 1047  cd git/plataforma/v360-dashboard-backend/
+ 1048  git status
+ 1049  git checkout BE-8z1gwj 
+ 1050  git checkout development 
+ 1051  git pull
+ 1052  git checkout BE-8z1gwj 
+ 1053  git status
+ 1054  cd v360-dashboard-frontend/
+ 1055  npm run start
+ 1056  sudo snap install --classic heroku
+ 1057  heroku --version
+ 1058  heroku login
+ 1059  pip install gunicorn
+ 1060  source venv/bin/activate
+ 1061  python3 -m venv venv
+ 1062  apt install python3.8-venv
+ 1063  sudo apt install python3.8-venv
+ 1064  sudo apt install python3.8-venv --fix-broken install
+ 1065  sudo apt --fix-broken install
+ 1066  python3 -m venv venv
+ 1067  sudo apt install python3.8-venv
+ 1068  python3 -m venv venv
+ 1069  source venv/bin/activate
+ 1070  pip install flask gunicorn
+ 1071  python3 app.py 
+ 1072  pip install joblib
+ 1073  python3 app.py 
+ 1074  pip install nltk
+ 1075  python3 app.py 
+ 1076  pip install pandas
+ 1077  python3 app.py 
+ 1078  pip install matplotlib
+ 1079  python3 app.py 
+ 1080  pip3 install twint
+ 1081  python3 app.py 
+ 1082  pip3 uninstall twint
+ 1083  pip3 install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+ 1084  pip install twint
+ 1085  pip3 uninstall twint
+ 1086  pip3 install --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+ 1087  python3 app.py 
+ 1088  pip install gunicorn
+ 1089  pip freeze > requirements.txt
+ 1090  echo "web: gunicorn app:app" > Procfile
+ 1091  git status
+ 1092  git push
+ 1093  heroku apps:create brimo
+ 1094  git push heroku master
+ 1095  git push heroku main
+ 1096  git add .
+ 1097  git commit -m "change twint version"
+ 1098  git push heroku main
+ 1099  heroku logs --tail
+ 1100  git add .
+ 1101  git commit -m "remove date field"
+ 1102  git push
+ 1103  git push heroku main
+ 1104  heroku logs --tail
+ 1105  pip3 uninstall twint
+ 1106  pip3 install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+ 1107  pip install twint
+ 1108  pip install wheel
+ 1109  pip3 uninstall twint
+ 1110  pip uninstall twint
+ 1111  pip3 install twint
+ 1112  pip freeze > requirements.txt
+ 1113  git add .
+ 1114  git commit -m "add wheel"
+ 1115  git push
+ 1116  git push heroku main
+ 1117  heroku logs --tail
+ 1118  python3 app.py 
+ 1119  python3 app.py 
+ 1120  cd v360-dashboard-frontend/
+ 1121  npm run start
+ 1122  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1123  heroku logs --tail
+ 1124  git add .
+ 1125  git commit -m "Change twint vers"
+ 1126  git push
+ 1127  git push heroku main
+ 1128  git add .
+ 1129  git commit -m "Change twint repository"
+ 1130  git push
+ 1131  git push heroku main
+ 1132  git add .
+ 1133  git commit -m "Change twint repository"
+ 1134  git push
+ 1135  git push heroku main
+ 1136  git add .
+ 1137  git commit -m "Change twint repository"
+ 1138  git push
+ 1139  git push heroku main
+ 1140  git add .
+ 1141  git commit -m "Change twint repository"
+ 1142  git push
+ 1143  git push heroku main
+ 1144  git add .
+ 1145  git commit -m "Change twint repository"
+ 1146  git push
+ 1147  git push heroku main
+ 1148  git add .
+ 1149  git commit -m "Change twint repository"
+ 1150  git push
+ 1151  git push heroku main
+ 1152  git add .
+ 1153  git commit -m "Change twint repository"
+ 1154  git push
+ 1155  git push heroku main
+ 1156  git add .
+ 1157  git commit -m "Change twint repository"
+ 1158  git push heroku main
+ 1159  git add .
+ 1160  git commit -m "Change twint repository"
+ 1161  git push heroku main
+ 1162  git add .
+ 1163  git commit -m "Change twint repository"
+ 1164  git push
+ 1165  git push heroku main
+ 1166  heroku logs --tail
+ 1167  cd git/plataforma/v360-dashboard-backend/
+ 1168  git status
+ 1169  git checkout master
+ 1170  git pull
+ 1171  git fetch origin --prune
+ 1172  git pull
+ 1173  mvn release:prepare -Dresume=false -Darguments=-DskipTests
+ 1174  git push
+ 1175  git checkout BE-8z1gwj 
+ 1176  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1177  git add .
+ 1178  git commit -m "Novos parametros pra pesquisa"
+ 1179  git push
+ 1180  git push heroku main
+ 1181  heroku logs --tail
+ 1182  git add .
+ 1183  git commit -m "Test"
+ 1184  git push
+ 1185  git push heroku main
+ 1186  heroku logs --tail
+ 1187  git add .
+ 1188  git commit -m "Test"
+ 1189  git push
+ 1190  git push heroku main
+ 1191  heroku logs --tail
+ 1192  cd v360-dashboard-frontend/
+ 1193  npm run start
+ 1194  cd git/plataforma/v360-dashboard-backend/
+ 1195  git status
+ 1196  git checkout development 
+ 1197  git pull
+ 1198  git checkout BE-8z1gwj 
+ 1199  git status
+ 1200  git merge development 
+ 1201  mvn clean test
+ 1202  git status
+ 1203  mvn clean test
+ 1204  cd v360-dashboard-frontend/
+ 1205  npm run start
+ 1206  cd ..
+ 1207  cd v360-dashboard-backend/
+ 1208  git checkout development 
+ 1209  git status
+ 1210  git pull
+ 1211  git status
+ 1212  git checkout -b cascade-delete-update-null-safety
+ 1213  git push --set-upstream origin cascade-delete-update-null-safety 
+ 1214  cd git/plataforma/v360-dashboard-frontend/
+ 1215  git status
+ 1216  git checkout development 
+ 1217  git pull
+ 1218  git checkout available-for-all-checkbox-visual-changes 
+ 1219  git checkout development 
+ 1220  git pull
+ 1221  git tag -a rc1-v1.13.0 -m "Update de acesso aos relatórios nas telas de empresa e usuário"
+ 1222  git push origin rc1-v1.13.0 
+ 1223  git checkout -b fix-acesso-and-scroll
+ 1224  git push --set-upstream origin fix-acesso-and-scroll 
+ 1225  git checkout development 
+ 1226  git pull
+ 1227  git checkout fix-acesso-and-scroll 
+ 1228  git merge development 
+ 1229  git status
+ 1230  git checkout development 
+ 1231  git status
+ 1232  git pull
+ 1233  git tag -a rc2-v1.13.0 -m "Bug fixing"
+ 1234  git push origin rc2-v1.13.0 
+ 1235  git checkout -b user-component-refactoring
+ 1236  git push --set-upstream origin user-component-refactoring 
+ 1237  git checkout development 
+ 1238  git status
+ 1239  git pull
+ 1240  git tag -a rc3-v1.13.0 -m "Bug fixing and refatoring"
+ 1241  git push origin rc3-v1.13.0 
+ 1242  git checkout -b not-selecting-account-perm-edit
+ 1243  git push --set-upstream origin not-selecting-account-perm-edit 
+ 1244  git status
+ 1245  git checkout development 
+ 1246  git checkout -b bug-fixing-dtq6ey
+ 1247  git push --set-upstream origin bug-fixing-dtq6ey 
+ 1248  git status
+ 1249  git merge not-selecting-account-perm-edit 
+ 1250  git checkout development 
+ 1251  git pull
+ 1252  git checkout -b sentry-fixes
+ 1253  git push --set-upstream origin sentry-fixes 
+ 1254  cd ..
+ 1255  cd v360-dashboard-backend/
+ 1256  git status
+ 1257  git pull
+ 1258  git checkout -b change-default-updateforall-to-true-and-permissions-data-cleaning-migrations
+ 1259  git push --set-upstream origin change-default-updateforall-to-true-and-permissions-data-cleaning-migrations 
+ 1260  git status
+ 1261  git checkout development 
+ 1262  git pull
+ 1263  git status
+ 1264  git checkout -b dtq6ey
+ 1265  git push --set-upstream origin dtq6ey 
+ 1266  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1267  pip install celery
+ 1268  pip freeze > requirements.txt
+ 1269  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1270  heroku logs --tail
+ 1271  git add .
+ 1272  git push
+ 1273  git commit -m "Trying threads"
+ 1274  git push
+ 1275  git push heroku main
+ 1276  heroku logs --tail
+ 1277  cd v360-dashboard-frontend/
+ 1278  npm run start
+ 1279  cd git/plataforma/v360-dashboard-frontend/
+ 1280  git status
+ 1281  git checkout development 
+ 1282  git pull
+ 1283  git tag -a rc4-v1.13.0 -m "Sentry and fixed errors"
+ 1284  git push origin rc4-v1.13.0 
+ 1285  top
+ 1286  cd git/plataforma/v360-dashboard-backend/
+ 1287  git status
+ 1288  git checkout development 
+ 1289  git pull
+ 1290  git checkout -b revert-change-on-account-permission-from-company-availability
+ 1291  git push --set-upstream origin revert-change-on-account-permission-from-company-availability 
+ 1292  git checkout development 
+ 1293  git checkout revert-change-on-account-permission-from-company-availability
+ 1294  git checkout -b available-for-all-tests
+ 1295  git push --set-upstream origin available-for-all-tests 
+ 1296  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1297  sh herokudeploy.sh
+ 1298  heroku restart
+ 1299  sh herokudeploy.sh
+ 1300  heroku restart
+ 1301  sh herokudeploy.sh
+ 1302  heroku redis:cli -a brimo --confirm brimo
+ 1303  heroku restart
+ 1304  sh herokudeploy.sh
+ 1305  heroku restart
+ 1306  sh herokudeploy.sh
+ 1307  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1308  pip install redis
+ 1309  pip freeze > requirements.txt
+ 1310  git add .
+ 1311  git commit -m "Trying celery"
+ 1312  git push
+ 1313  git push heroku main
+ 1314  heroku logs --tail
+ 1315  heroku restart
+ 1316  heroku logs --tail
+ 1317  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1318  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1319  heroku logs --tail
+ 1320  dstat --list
+ 1321  sudo apt install dstat
+ 1322  dstat --list
+ 1323  dstat --all
+ 1324  dstat --output file
+ 1325  dstat -a --output file
+ 1326  dstat --output medicao1.csv
+ 1327  sudo apt-get update -y
+ 1328  sudo apt-get install -y dstat
+ 1329  dstat --output medicao1.csv
+ 1330  sudo apt-get install conky
+ 1331  sudo dnf install conky conky-manager
+ 1332  sudo apt-get install conky conky-manager
+ 1333  sudo apt-get install conky-manager
+ 1334  sudo apt-get install conky-all
+ 1335  conky --version
+ 1336  conky
+ 1337  conky -b
+ 1338  top
+ 1339  htop
+ 1340  sudo apt install htop
+ 1341  htop
+ 1342  sudo apt install glances
+ 1343  glances
+ 1344  glances --export csv --export-csv-file /tmp/glances.csv
+ 1345  glances --export csv --export-csv-file /tmp/medicao1.csv
+ 1346  glances --export csv --export-csv-file /tmp/medicao2.csv
+ 1347  glances --export csv --export-csv-file /tmp/medicao3.csv
+ 1348  glances --export csv --export-csv-file /tmp/medicao4.csv
+ 1349  glances --export csv --export-csv-file /tmp/medicao5.csv
+ 1350  glances --export csv --export-csv-file /tmp/medicao6.csv
+ 1351  glances --export csv --export-csv-file /tmp/medicao7.csv
+ 1352  glances --export csv --export-csv-file /tmp/medicao8.csv
+ 1353  glances --export csv --export-csv-file /tmp/medicao9.csv
+ 1354  glances --export csv --export-csv-file /tmp/medicao10.csv
+ 1355  glances
+ 1356  cd git/plataforma/v360-dashboard-frontend/
+ 1357  git status
+ 1358  git pull
+ 1359  git checkout -b #ep8wpn
+ 1360  git checkout -b ep8wpn
+ 1361  git push --set-upstream origin ep8wpn 
+ 1362  git checkout -b dzb12v
+ 1363  git push --set-upstream origin dzb12v 
+ 1364  git checkout ep8wpn 
+ 1365  git checkout -b dzb12a
+ 1366  git push --set-upstream origin dzb12a
+ 1367  cd Documents/ADS
+ 1368  sh startmonitor.sh 
+ 1369  sudo sh startmonitor.sh 
+ 1370  sh startmonitor.sh 
+ 1371  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1372  sh herokudeploy.sh 
+ 1373  heroku restart
+ 1374  sh herokudeploy.sh 
+ 1375  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1376  heroku logs --tail
+ 1377  cd git/plataforma/v360-dashboard-frontend/
+ 1378  git status
+ 1379  git checkout development 
+ 1380  git pull
+ 1381  git tag -a rc5-v1.13.0 -m "Ajustes e bugfixing"
+ 1382  git push origin rc5-v1.13.0 
+ 1383  git status
+ 1384  git checkout -b dz6bgx
+ 1385  git push --set-upstream origin dz6bgx 
+ 1386  git checkout development 
+ 1387  git pull
+ 1388  git tag -a rc6-v1.13.0 -m "Fix JSON invalido sendo enviado"
+ 1389  git push origin rc6-v1.13.0 
+ 1390  glances --export csv --export-csv-file /tmp/medicao1.csv
+ 1391  glances --export csv --export-csv-file /tmp/medicao2.csv
+ 1392  glances --export csv --export-csv-file /tmp/medicao3.csv
+ 1393  glances --export csv --export-csv-file /tmp/medicao4.csv
+ 1394  glances --export csv --export-csv-file /tmp/medicao5.csv
+ 1395  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1396  heroku logs --tail
+ 1397  chmod +x ./startmonitor.sh 
+ 1398  startmonitor.sh
+ 1399  sh startmonitor.sh 
+ 1400  chmod -R +x ./
+ 1401  sh startmonitor.sh 
+ 1402  sh mata-monitoramento.sh 
+ 1403  cd v360-dashboard-frontend/
+ 1404  npm run start
+ 1405  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1406  cd ..
+ 1407  cd v360-dashboard-backend/
+ 1408  git status
+ 1409  git checkout development 
+ 1410  git pull
+ 1411  cd v360-dashboard-frontend/
+ 1412  npm i -D cypress-wait-until
+ 1413  cd v360-dashboard-frontend/
+ 1414  npm run start
+ 1415  cd v360-dashboard-frontend/
+ 1416  node_modules/cypress/
+ 1417  node_modules/cypress/ run
+ 1418  cypress run
+ 1419  node_modules/.bin/cypress run
+ 1420  npm run cy:open
+ 1421  cd v360-dashboard-frontend/
+ 1422  npm run start
+ 1423  npm install
+ 1424  npm run start
+ 1425  cd git/plataforma/v360-dashboard-frontend/
+ 1426  git status
+ 1427  git checkout filtro-obrigatorio 
+ 1428  git pull
+ 1429  cd ..
+ 1430  cd v360-dashboard-backend/
+ 1431  git status
+ 1432  git checkout development 
+ 1433  git pull
+ 1434  docker ps
+ 1435  git status
+ 1436  git checkout -b a74cyk
+ 1437  git push --set-upstream origin a74cyk 
+ 1438  git checkout -b 8z2gea
+ 1439  git push --set-upstream origin 8z2gea 
+ 1440  cd ..
+ 1441  cd v360-dashboard-frontend/
+ 1442  git checkout development 
+ 1443  git pull
+ 1444  git checkout -b b9cx9h
+ 1445  git push --set-upstream origin b9cx9h 
+ 1446  cd ..
+ 1447  cd v360-dashboard-backend/
+ 1448  git status
+ 1449  git checkout development 
+ 1450  git pull
+ 1451  git checkout -b b9cx9h
+ 1452  git push --set-upstream origin b9cx9h 
+ 1453  git checkout a74cyk 
+ 1454  git checkout 8z2gea 
+ 1455  git merge a74cyk 
+ 1456  1. Fale o que entende sobre os seguintes termos:
+ 1457  a. conflito efetivo,
+ 1458  b. confusion,
+ 1459  2. Como se verifica a alcançabilidade de marcações em Redes de Petri? Explique e
+ 1460  exemplifique.
+ 1461  3. Fale o que entende sobre as seguintes propriedades:
+ 1462  a. limitação,
+ 1463  b. limitação estrutural,
+ 1464  c. conservação,
+ 1465  d. ausência de bloqueio (deadlock freedom),
+ 1466  e. liveness,
+ 1467  f. reversibilidade.
+ 1468  4. O que entende invariante de lugar? Mostre em que sentido os invariantes de
+ 1469  lugar são úteis na análise de propriedades.
+ 1470  5. Desenvolva um modelo redes de Petri (pensando nas características de
+ 1471  desempenho, embora – neste exemplo – não esteja solicitando a inclusão dos
+ 1472  tempos) para um sistema computacional composto por dois processadores, cada
+ 1473  um com memória cache privada e uma memória comum compartilhada. Uma
+ 1474  aplicação (programa) é executada em cada processador. A característica
+ 1475  temporal - de interesse - destas cargas (os programas) é que fazem referência a
+ 1476  memória periodicamente com um tempo médio reqDelay. Os processadores
+ 1477  acessam inicialmente a memória cache, cujo tempo de acesso é cacheDelay. A
+ 1478  informação estando na memória cache (hit- acerto) é tratada pelo processador
+ 1479  (execução). Caso a informação não esteja na cache (miss – erro), a memória
+ 1480  java -jar "Mercury.jar"
+ 1481  cd git/plataforma/v360-dashboard-frontend/
+ 1482  git status
+ 1483  git checkout development 
+ 1484  git pull
+ 1485  git tag -a rc7-v1.15.0 -m "Campos de Configs nas telas de Usuario e Empresa"
+ 1486  git push origin rc7-v1.15.0
+ 1487  git status
+ 1488  git checkout -b b9d2dy
+ 1489  git push --set-upstream origin b9d2dy
+ 1490  git status
+ 1491  git checkout development 
+ 1492  git pull
+ 1493  git checkout -b 1p6q6vm
+ 1494  git push --set-upstream origin 1p6q6vm 
+ 1495  git checkout development 
+ 1496  git pull
+ 1497  git tag -a rc9-v1.15.0 -m "Bug fixing"
+ 1498  git push origin rc9-v1.15.0 
+ 1499  git status
+ 1500  git pull
+ 1501  git tag -a rc10-v1.15.0 -m "Exceto fix"
+ 1502  git push origin rc10-v1.15.0 
+ 1503  cd ..
+ 1504  cd v360-dashboard-backend/
+ 1505  git status
+ 1506  git checkout a74cyk 
+ 1507  git checkout 8z2gea 
+ 1508  git status
+ 1509  git checkout development 
+ 1510  git pull
+ 1511  git checkout -b 8z1m3h
+ 1512  git push --set-upstream origin 8z1m3h 
+ 1513  git clone https://github.com/otavioalves2/brimo-front.git
+ 1514  git remove set-url origin https://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@github.com/otavioalves2/brimo-front.git
+ 1515  git remote set-url origin https://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@github.com/otavioalves2/brimo-front.git
+ 1516  git clone https://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@github.com/otavioalves2/brimo-front.git
+ 1517  npm install -g @angular/cli
+ 1518  ng --version
+ 1519  ng new brimo-front
+ 1520  ng new brimo-front-app
+ 1521  cd brimo-front-app/
+ 1522  ng serve
+ 1523  npm install @angular/cli@latest @angular/compiler-cli --save-dev
+ 1524  code .
+ 1525  node -v
+ 1526  npm -v
+ 1527  npm install express path --save
+ 1528  cd ..
+ 1529  git status
+ 1530  heroku git:remote -a brimo-front
+ 1531  git add .
+ 1532  git commit -m "angular base"
+ 1533  git push heroku master
+ 1534  git push heroku main
+ 1535  git push
+ 1536  git push heroku main
+ 1537  git push heroku main:main
+ 1538  heroku login
+ 1539  heroku git:remote -a brimo-front
+ 1540  git push
+ 1541  git push heroku main
+ 1542  ng build --prod
+ 1543  node server.js
+ 1544  cd ..
+ 1545  git status
+ 1546  git push heroku master
+ 1547  git push heroku main
+ 1548  heroku git:remote -a brimo-front
+ 1549  git add.
+ 1550  git add .
+ 1551  git commit -m "a"
+ 1552  git push
+ 1553  git add .
+ 1554  git commit -m "a"
+ 1555  git push
+ 1556  git push heroku main
+ 1557  git push heroku main:main
+ 1558  cd brimo-front-app/
+ 1559  git push heroku main:main
+ 1560  cd ..
+ 1561  code .
+ 1562  git status
+ 1563  git add .
+ 1564  git commit -m "teste"
+ 1565  git push
+ 1566  git push heroku main:main
+ 1567  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1568  sh herokudeploy.sh 
+ 1569  cd front/
+ 1570  npm install -g @angular/cli
+ 1571  ng --version
+ 1572  ng new brimo-angular-heroku
+ 1573  ng serve
+ 1574  cd brimo-angular-heroku/
+ 1575  ng serve
+ 1576  npm install @angular/cli@latest @angular/compiler-cli --save-dev
+ 1577  node -v
+ 1578  npm -v
+ 1579  npm install express path --save
+ 1580  cd ..
+ 1581  sh herokudeploy.sh 
+ 1582  git status
+ 1583  git log
+ 1584  git revert 9050a9d69646e927ffb0d6d6e9ac717bb3e7a69e
+ 1585  sh herokudeploy.sh 
+ 1586  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1587  heroku logs -tail
+ 1588  heroku logs --tail
+ 1589  cd v360-dashboard-frontend/
+ 1590  npm run start
+ 1591  cd v360-dashboard-frontend/
+ 1592  npm run start
+ 1593  code .
+ 1594  cd ..
+ 1595  cd v360-dashboard-backend/
+ 1596  git checkout development 
+ 1597  git pull
+ 1598  git checkout -b a741dt
+ 1599  git push --set-upstream origin a741dt 
+ 1600  git checkout master
+ 1601  git pull
+ 1602  git status
+ 1603  git pull
+ 1604  mvn release:prepare -Dresume=false -Darguments=-DskipTests
+ 1605  git push
+ 1606  cd git/plataforma/v360-dashboard-frontend/
+ 1607  git status
+ 1608  git pull
+ 1609  git checkout -b 1pcbucf
+ 1610  git push --set-upstream origin 1pcbucf 
+ 1611  git checkout development 
+ 1612  git status
+ 1613  git checkout -b a741dt
+ 1614  git push --set-upstream origin a741dt 
+ 1615  git status
+ 1616  git checkout development 
+ 1617  git pull
+ 1618  git tag -a rc14-v1.15.0 -m "Toasts de erro pra campos inválidos"
+ 1619  git push origin rc14-v1.15.0 
+ 1620  git status
+ 1621  git pull
+ 1622  git checkout -b toast-adjustment
+ 1623  git push --set-upstream origin toast-adjustment 
+ 1624  git checkout development 
+ 1625  git pull
+ 1626  git tag -a rc15-v1.15.0 -m "Toasts refactor"
+ 1627  git push origin rc15-v1.15.0 
+ 1628  git checkout main
+ 1629  git pull
+ 1630  git tag -a v1.15.0 -m "Filtro obrigatório + Testes + Toasts + Config"
+ 1631  git push origin v1.15.0
+ 1632  git checkout development 
+ 1633  git pull
+ 1634  git checkout -b dzd1w9
+ 1635  git push --set-upstream origin dzd1w9 
+ 1636  cd v360-dashboard-frontend/
+ 1637  npm install --save html2canvas
+ 1638  npm install --save interactjs
+ 1639  ng g c form-component
+ 1640  npm install primeng --save
+ 1641  npm install primeicons --save
+ 1642  git status
+ 1643  git add .
+ 1644  git commit -m "feat: formulario inicial"
+ 1645  ng serve
+ 1646  cd v360-dashboard-frontend/
+ 1647  npm run start
+ 1648  cd Documents
+ 1649  mkdir sandboxshot
+ 1650  cd sandboxshot/
+ 1651  git init
+ 1652  git add .
+ 1653  git commit -m "first commit"
+ 1654  git remote add origin https://github.com/otavioalves2/sandboxshot.git
+ 1655  git push -u origin main
+ 1656  cd git/plataforma/v360-dashboard-backend/
+ 1657  git status
+ 1658  git checkout a741dt 
+ 1659  java -jar "Mercury.jar"
+ 1660  sh launch.sh 
+ 1661  sh launch.sh 
+ 1662  npm link
+ 1663  git status
+ 1664  git add .
+ 1665  git commit -m "remove default watermark from varejo and changes to readme"
+ 1666  git push
+ 1667  git clone https://github.com/varejo360/front-end-patterns.git
+ 1668  git clone git@github.com:varejo360/front-end-patterns.git
+ 1669  cd front-end-patterns/
+ 1670  git status
+ 1671  code .
+ 1672  git remote set-url origin https://github.com/v360-otavio-sales/front-end-patterns.git
+ 1673  git push
+ 1674  git remote set-url origin git@github.com:varejo360/front-end-patterns.git
+ 1675  git push
+ 1676  git config
+ 1677  git config user
+ 1678  git config user.name
+ 1679  git config --list
+ 1680  git push
+ 1681  cd git/plataforma/v360-dashboard-frontend/
+ 1682  git status
+ 1683  git checkout a741dt 
+ 1684  git checkout dzd1w9 
+ 1685  git status
+ 1686  git checkout development 
+ 1687  git pull
+ 1688  git checkout dzd1w9 
+ 1689  git merge development 
+ 1690  git log
+ 1691  git revert -m 1 be1a663c682ae8fbdc704c6d533609957c3c63be
+ 1692  git log
+ 1693  git revert -m 1 be1a663c682ae8fbdc704c6d533609957c3c63be
+ 1694  git push
+ 1695  git status
+ 1696  git checkout development 
+ 1697  git pull
+ 1698  git tag -a rc-v1.16.0 -m "Screenshot feature"
+ 1699  git push origin rc-v1.16.0
+ 1700  cd
+ 1701  sudo apt update
+ 1702  sudo apt install virtualbox virtualbox-ext-pack
+ 1703  cd git/plataforma/v360-dashboard-frontend/
+ 1704  git status
+ 1705  git checkout -b update-sandboxshot-call
+ 1706  git push --set-upstream origin update-sandboxshot-call 
+ 1707  git checkout development 
+ 1708  git checkout -b 1p0xg4v
+ 1709  git push --set-upstream origin 1p0xg4v 
+ 1710  git checkout development 
+ 1711  git pull
+ 1712  git checkout -b screenshot-bug-fixing
+ 1713  git push --set-upstream origin screenshot-bug-fixing 
+ 1714  git status
+ 1715  code .
+ 1716  git clone https://github.com/otavioalves2/sandboxshot.git
+ 1717  cd sandboxshot/
+ 1718  git add .
+ 1719  git commit -m "first commit"
+ 1720  git push origin main
+ 1721  git remote set-url origin "https://otavioalves2@github.com/otavioalves2/sandboxshot.git"
+ 1722  git push origin main
+ 1723  npm adduser
+ 1724  npm install interactjs
+ 1725  npm install
+ 1726  npm init
+ 1727  npm install interactjs
+ 1728  npm install html2canvas
+ 1729  npm link
+ 1730  git add .
+ 1731  git commit -m "feat: added action div row that follows the screenshot area and added button that triggers the save locally function"
+ 1732  git push
+ 1733  npm install --save @fortawesome/fontawesome-free
+ 1734  @fortawesome/fontawesome-svg-core                    @fortawesome/free-regular-svg-icons npm install --save @fortawesome/fontawesome-svg-core                    @fortawesome/free-regular-svg-icons                    @fortawesome/free-solid-svg-icons
+ 1735  npm install --save @fortawesome/fontawesome-svg-core                    @fortawesome/free-regular-svg-icons \
+ 1736  npm install --save @fortawesome/fontawesome-svg-core
+ 1737  npm install --save @fortawesome/free-regular-svg-icons
+ 1738  npm install --save @fortawesome/free-solid-svg-icons
+ 1739  git add .
+ 1740  git commit -m "feat: put circles on border area and the action buttons"
+ 1741  git push 
+ 1742  git add .
+ 1743  git commit -m "feat: now the action buttons move to the top when hit bottom border of the screen"
+ 1744  git push 
+ 1745  git add .
+ 1746  git commit -m "some fixes"
+ 1747  git push 
+ 1748  git add .
+ 1749  git commit -m "some fixes"
+ 1750  git push 
+ 1751  npm publish
+ 1752  ifdown eth0
+ 1753  sudo apt install ifupdown
+ 1754  ip addr
+ 1755  sudo dhclient – r
+ 1756  sudo dhclient –r
+ 1757  sudo dhclient
+ 1758  sudo dhclient lo -r
+ 1759  sudo dhclient lo
+ 1760  sudo dhclient lo -r
+ 1761  sudo dhclient lo
+ 1762  sudo dhclient
+ 1763  dhclient -r
+ 1764  dhclient
+ 1765  sudo dhclient
+ 1766  dhclient -r
+ 1767  sudo dhclient
+ 1768  npm version patch
+ 1769  npm publish
+ 1770  cd git/plataforma/v360-dashboard-frontend/
+ 1771  git status
+ 1772  git checkout development 
+ 1773  git pull
+ 1774  git checkout -b screenshot-bug-fixing
+ 1775  git checkout -b screenshot-bug-fixing-2
+ 1776  git push --set-upstream origin screenshot-bug-fixing-2
+ 1777  git status
+ 1778  git checkout development 
+ 1779  git pull
+ 1780  git tag -a v1.16.0-alpha2 -m "Ajustes no Screenshot"
+ 1781  git push origin v1.16.0-alpha2 
+ 1782  git status
+ 1783  git checkout -b ajuste-script-deploy-prod
+ 1784  git push --set-upstream origin ajuste-script-deploy-prod 
+ 1785  git checkout development 
+ 1786  git checkout -b package-update
+ 1787  git push --set-upstream origin package-update 
+ 1788  git checkout development 
+ 1789  git pull
+ 1790  git tag -a v1.16.0-alpha3 -m "Ajustes no script de deploy pra prod e versao do sandboxshot"
+ 1791  git push origin v1.16.0-alpha3 
+ 1792  git status
+ 1793  git checkout -b ajuste-trigger-iqvia-prod
+ 1794  git push --set-upstream origin ajuste-trigger-iqvia-prod 
+ 1795  git checkout development 
+ 1796  git status
+ 1797  git checkout -b lista-de-relatorios
+ 1798  git push --set-upstream origin lista-de-relatorios 
+ 1799  git checkout development 
+ 1800  git pull
+ 1801  git checkout -b iqvia-env
+ 1802  git push --set-upstream origin iqvia-env 
+ 1803  git checkout development 
+ 1804  git pull
+ 1805  git checkout iqvia-env
+ 1806  git checkout development 
+ 1807  git checkout -b tooltip-sidebar
+ 1808  git push --set-upstream origin tooltip-sidebar 
+ 1809  ng serve
+ 1810  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1811  sh herokudeploy.sh 
+ 1812  pip install -U flask-cors
+ 1813  pip freeze > requirements.txt 
+ 1814  sh herokudeploy.sh 
+ 1815  cd v360-dashboard-frontend/
+ 1816  npm run start
+ 1817  npm install
+ 1818  npm i sandboxshot --save
+ 1819  ng serve
+ 1820  npm install
+ 1821  npm i sandboxshot --save
+ 1822  ng serve
+ 1823  npm run start
+ 1824  ng serve
+ 1825  npm install
+ 1826  ng serve
+ 1827  npm install
+ 1828  npm link sandboxshot
+ 1829  ng serve
+ 1830  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1831  heroku logs --tail
+ 1832  cd v360-dashboard-frontend/
+ 1833  ng serve
+ 1834  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1835  cd ..
+ 1836  cd v360-dashboard-backend/
+ 1837  git status
+ 1838  git checkout development 
+ 1839  git pull
+ 1840  git checkout -b lista-de-relatorios
+ 1841  git push --set-upstream origin lista-de-relatorios 
+ 1842  cd v360-dashboard-frontend/
+ 1843  npm link sandboxshot
+ 1844  ng serve
+ 1845  ng serve
+ 1846  npm list -g
+ 1847  npm link sandboxshot
+ 1848  ng serve
+ 1849  npm unlink sandboxshot
+ 1850  npm i sandboxshot --save
+ 1851  ng serve
+ 1852  npm install
+ 1853  ng serve
+ 1854  npm rm sandboxshot
+ 1855  npm link sandboxshot
+ 1856  npm install
+ 1857  npm link sandboxshot
+ 1858  npm unlink sandboxshot
+ 1859  npm install sandboxshot
+ 1860  npm install sandboxshot --save
+ 1861  ng serve
+ 1862  npm link
+ 1863  npm version patch
+ 1864  npm publish
+ 1865  npm link
+ 1866  npm version patch
+ 1867  npm publish
+ 1868  ng serve
+ 1869  cd v360-dashboard-frontend/
+ 1870  ng serve
+ 1871  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 1872  cd git/plataforma/v360-dashboard-frontend/
+ 1873  git checkout lista-de-relatorios 
+ 1874  cd ..
+ 1875  cd v360-dashboard-backend/
+ 1876  git checkout lista-de-relatorios 
+ 1877  cd git/plataforma/v360-dashboard-frontend/
+ 1878  git status
+ 1879  cd ..
+ 1880  cd v360-dashboard-backend/
+ 1881  git status
+ 1882  git checkout development 
+ 1883  git pull
+ 1884  git checkout lista-de-relatorios 
+ 1885  git merge development 
+ 1886  git checkout development 
+ 1887  git pull
+ 1888  git status
+ 1889  git checkout master
+ 1890  git status
+ 1891  git pull
+ 1892  git checkout -b hotfix-cadastro-empresa
+ 1893  git push --set-upstream origin hotfix-cadastro-empresa 
+ 1894  git checkout master 
+ 1895  git pull
+ 1896  mvn release:prepare -Dresume=false -Darguments=-DskipTests
+ 1897  git push
+ 1898  git checkout development 
+ 1899  git pull
+ 1900  git checkout -b unit-test-for-previous-hotfix
+ 1901  git push --set-upstream origin unit-test-for-previous-hotfix 
+ 1902  cd ..
+ 1903  cd v360-dashboard-frontend/
+ 1904  git checkout development 
+ 1905  git pull
+ 1906  git status
+ 1907  git tag -a v1.17.1-alpha1 -m "Lista de relatorios"
+ 1908  git push origin v1.17.1-alpha1 
+ 1909  git checkout -b lista-de-relatorios-2
+ 1910  git push --set-upstream origin lista-de-relatorios-2 
+ 1911  git checkout main
+ 1912  git pull
+ 1913  git checkout -b cadastro-company-hotfix
+ 1914  git push --set-upstream origin cadastro-company-hotfix 
+ 1915  git checkout lista-de-relatorios-2 
+ 1916  code prod_schema.sql 
+ 1917  code plain_schema_prod.sql 
+ 1918  java -jar "Mercury.jar" 
+ 1919  cypress run
+ 1920  cypress open
+ 1921  cy:open
+ 1922  npm run cy:open
+ 1923  cd v360-dashboard-frontend/
+ 1924  npm run cy:open
+ 1925  cd ..
+ 1926  cd v360-dashboard-backend/
+ 1927  git status
+ 1928  git checkout development 
+ 1929  git pull
+ 1930  git status
+ 1931  git pull
+ 1932  git checkout -b fixing-lista-de-relatorios
+ 1933  git push --set-upstream origin fixing-lista-de-relatorios 
+ 1934  git checkout master 
+ 1935  git pull
+ 1936  git checkout development 
+ 1937  git pull
+ 1938  cd v360-dashboard-frontend/
+ 1939  npm run cy:open
+ 1940  cd v360-dashboard-frontend/
+ 1941  npm run cy:open
+ 1942  cd ..
+ 1943  dir
+ 1944  cd Documents/
+ 1945  cd Mercury\ 5.1/
+ 1946  java -jar "Mercury.jar" 
+ 1947  cd git/plataforma/v360-dashboard-frontend/
+ 1948  git status
+ 1949  git checkout development 
+ 1950  git pull
+ 1951  git tag -a v1.17.1-alpha2 -m "Segunda parte do update da lista de relatorios"
+ 1952  git push origin v1.17.1-alpha2
+ 1953  cd
+ 1954  pip3 install psutil
+ 1955  cd git/plataforma/v360-dashboard-frontend/
+ 1956  git status
+ 1957  git pull
+ 1958  git checkout -b fixing-lista-de-relatorios-1
+ 1959  git push --set-upstream origin fixing-lista-de-relatorios-1 
+ 1960  git status
+ 1961  git checkout development 
+ 1962  git pull
+ 1963  git tag -a v1.7.1-alpha4 -m "Adiciona modificações na tela de relatórios e lista, bug fixing"
+ 1964  git push origin v1.7.1-alpha4 
+ 1965  git status
+ 1966  git checkout -b bug-fixing-lista-de-relatorios
+ 1967  git push --set-upstream origin bug-fixing-lista-de-relatorios 
+ 1968  git checkout main
+ 1969  git pull
+ 1970  git checkout bug-fixing-lista-de-relatorios 
+ 1971  git checkout development 
+ 1972  git pull
+ 1973  git tag -a v1.17.3-alpha1 -m "Ajustes gerais na tela de relatórios e listas, sem testes ainda"
+ 1974  git push origin v1.17.3-alpha1 
+ 1975  git checkout -b hotfix-relatorio
+ 1976  git push --set-upstream origin hotfix-relatorio 
+ 1977  git checkout development 
+ 1978  git pull
+ 1979  git tag -a v1.17.3-alpha2 -m "Pequeno bugfix"
+ 1980  git push origin v1.17.3-alpha2 
+ 1981  git pull
+ 1982  git tag -a v1.17.3-alpha3 -m "Pequeno bugfix"
+ 1983  git push origin v1.17.3-alpha3 
+ 1984  git status
+ 1985  git pull
+ 1986  git checkout -b testes-lista-de-relatorios
+ 1987  git push --set-upstream origin testes-lista-de-relatorios 
+ 1988  git status
+ 1989  git checkout development 
+ 1990  git pull
+ 1991  git status
+ 1992  git checkout -b bug-fixing-lista-de-relatorios-1012
+ 1993  git push --set-upstream origin bug-fixing-lista-de-relatorios-1012 
+ 1994  git checkout development 
+ 1995  git pull
+ 1996  git tag -a v1.17.3-alpha4 -m "Bug fixing relatorios"
+ 1997  git push origin v1.17.3-alpha4
+ 1998  git checkout -b ag-grid-license-key-update
+ 1999  git push --set-upstream origin ag-grid-license-key-update 
+ 2000  java -jar "Mercury.jar" 
+ 2001  source /home/otavio/Documents/Python/BRIMO/brimo/venv/bin/activate
+ 2002  history
+ 2003  history > print.txt
