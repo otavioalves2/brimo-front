@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormBeginnerComponent } from './components/form-beginner/form-beginner.component';
+import { FormBeginnerComponent } from './components/form/form.component';
 import {InputMaskModule} from 'primeng/inputmask';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
@@ -11,16 +11,15 @@ import { AnalysisService } from './services/analysis.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FormAdvancedComponent } from './components/form-advanced/form-advanced.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormBeginnerComponent,
     HeaderComponent,
-    FooterComponent,
-    FormAdvancedComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +28,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     InputTextModule,
     ButtonModule,
     FormsModule,
-    InputTextareaModule
+    InputTextareaModule,
+    TooltipModule
   ],
   providers: [AnalysisService],
   bootstrap: [AppComponent]

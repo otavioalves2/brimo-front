@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalysisService } from 'src/app/services/analysis.service';
+declare const Loader: any;
 
 @Component({
-  selector: 'app-form-beginner',
-  templateUrl: './form-beginner.component.html',
-  styleUrls: ['./form-beginner.component.scss']
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
 export class FormBeginnerComponent implements OnInit {
   keyword: string = "";
@@ -34,10 +35,12 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   submitForTweetAnalysis(){
+    Loader.open()
     this.analysisService.tweetAnalysis(this.keyword, this.language, this.limit, this.since, this.until).subscribe(response => {
       response.subscribe(result => {
         console.log(JSON.parse(JSON.stringify(result)).result);
         this.result = JSON.parse(JSON.stringify(result)).result;
+        Loader.close()
       })
     })
   }

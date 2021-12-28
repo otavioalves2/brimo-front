@@ -1,0 +1,45 @@
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh
+}
+.beginner{
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .three-buttons-row {
+    margin-top: -325px;
+    margin-left: 15px;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.advanced{
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 370px;
+  }
+  
+  .three-buttons-row {
+    margin-top: -45px;
+    margin-left: 15px;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.two-buttons-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}

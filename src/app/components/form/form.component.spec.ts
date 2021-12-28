@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormAdvancedComponent } from './form-advanced.component';
+import { FormBeginnerComponent } from './form.component';
 
-describe('FormAdvancedComponent', () => {
-  let component: FormAdvancedComponent;
-  let fixture: ComponentFixture<FormAdvancedComponent>;
+describe('FormBeginnerComponent', () => {
+  let component: FormBeginnerComponent;
+  let fixture: ComponentFixture<FormBeginnerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormAdvancedComponent ]
+      declarations: [ FormBeginnerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormAdvancedComponent);
+    fixture = TestBed.createComponent(FormBeginnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
