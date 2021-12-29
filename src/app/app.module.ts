@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {TooltipModule} from 'primeng/tooltip';
+import {ChartModule} from 'primeng/chart';
+import {TabViewModule} from 'primeng/tabview';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {TooltipModule} from 'primeng/tooltip';
     ButtonModule,
     FormsModule,
     InputTextareaModule,
-    TooltipModule
+    TooltipModule,
+    ChartModule,
+    TabViewModule,
+    VirtualScrollerModule
   ],
   providers: [AnalysisService],
   bootstrap: [AppComponent]

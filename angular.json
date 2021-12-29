@@ -38,7 +38,9 @@
               "src/assets/js-simple-loader-main/loader.css"
             ],
             "scripts": [
-              "src/assets/js-simple-loader-main/loader.js"
+              "src/assets/js-simple-loader-main/loader.js",
+              "node_modules/chart.js/dist/chart.js",
+              "src/assets/wordcloud2.js"
             ]
           },
           "configurations": {

@@ -1,17 +1,17 @@
 <section class="content" [ngClass]="{'advanced': advanced == true, 'beginner': advanced == false}">
   <section class="form">
     <span class="p-float-label">
-      <input id="keyword" [(ngModel)]="keyword" type="text" pInputText> 
+      <input id="keyword" [(ngModel)]="keyword" type="text" pInputText>
       <label for="keyword">Palavra-chave</label>
     </span>
     <span *ngIf="advanced" class="p-float-label">
-      <input id="language" [(ngModel)]="language" type="text" pInputText> 
+      <input id="language" [(ngModel)]="language" type="text" pInputText>
       <label for="language">Lingua</label>
     </span>
     <span *ngIf="advanced" class="p-float-label">
-      <input id="limit" [(ngModel)]="limit" type="text" pInputText> 
+      <input id="limit" [(ngModel)]="limit" type="text" pInputText>
       <label for="limit">Limite de tweets analisados</label>
-    </span> 
+    </span>
     <span *ngIf="advanced" class="p-float-label">
       <p-inputMask inputId="since" [(ngModel)]="since" mask="9999-99-99"></p-inputMask>
       <label for="since">De:</label>
@@ -19,18 +19,36 @@
     <span *ngIf="advanced" class="p-float-label">
       <p-inputMask inputId="until" [(ngModel)]="until" mask="9999-99-99"></p-inputMask>
       <label for="until">Até:</label>
-    </span> 
+    </span>
 
     <section class="two-buttons-row">
-      <p-button (click)="submitForTweetAnalysis()" label="Analisar" ></p-button>
-      <p-button (click)="advanced = !advanced" label="Avançado" ></p-button>
+      <p-button (click)="submitForTweetAnalysis()" label="Analisar"></p-button>
+      <p-button (click)="advanced = !advanced" label="Avançado"></p-button>
     </section>
   </section>
-  
-  <section class="three-buttons-row" *ngIf="!advanced">
+
+  <!--<section class="three-buttons-row" *ngIf="!advanced">
     <button pButton type="button" pTooltip="Mais rápido e menos confiável" (click)="lowLimit()" icon="pi pi-angle-down" class="p-button-raised p-button-rounded"></button>
     <button pButton type="button" pTooltip="Não tão rápido porém mais confiável" (click)="mediumLimit()" icon="pi pi-angle-up" class="p-button-raised p-button-rounded"></button>
     <button pButton type="button" pTooltip="Devagar porém muito confiável" (click)="highLimit()" icon="pi pi-angle-double-up" class="p-button-raised p-button-rounded"></button>
-  </section>
-  <textarea pInputTextarea [(ngModel)]="result" [disabled]="true" [autoResize]="true"></textarea>
+  </section>-->
+  <p-tabView>
+    <p-tabPanel header="Sentimentos">
+      <p-chart type="radar" [data]="dataSent" [options]="chartOptionsSent" [style]="{'width': '40%'}"></p-chart>
+    </p-tabPanel>
+    <p-tabPanel header="Polarização">
+      <p-chart type="doughnut" [data]="dataPol" [options]="chartOptionsPol" [style]="{'width': '40%'}"></p-chart>
+    </p-tabPanel>
+    <p-tabPanel header="Nuvem de palavras">
+      <canvas id="wordcloudCanvas" width="600" height="400"></canvas>
+    </p-tabPanel>
+    <p-tabPanel header="Lista de tweets">
+      <p-virtualScroller [value]="tweets" scrollHeight="200px" [itemSize]="4">
+        <ng-template let-tweet pTemplate="item">
+          teste
+        </ng-template>
+      </p-virtualScroller>
+    </p-tabPanel>
+</p-tabView>
+  <!--<textarea pInputTextarea [(ngModel)]="result" [disabled]="true" [autoResize]="true"></textarea>-->
 </section>
