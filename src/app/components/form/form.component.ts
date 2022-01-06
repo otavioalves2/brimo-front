@@ -4,6 +4,12 @@ import { AnalysisService } from 'src/app/services/analysis.service';
 declare const Loader: any;
 import * as WordCloud from 'src/assets/wordcloud2'
 
+export interface Tweets {
+  text: string;
+  pol: string;
+  sent: string;
+}
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -12,13 +18,11 @@ import * as WordCloud from 'src/assets/wordcloud2'
 export class FormBeginnerComponent implements OnInit {
   keyword: string = "";
   language: string = "pt";
-  limit: string = "100";
+  limit: number = 200;
   since: string = "2021-11-01";
   until: string = "2021-11-02";
 
   advanced: boolean = false;
-
-  result: string = "Placeholder para mostrar o resultado da request";
 
   dataSent: any;
   chartOptionsSent: any;
@@ -28,11 +32,26 @@ export class FormBeginnerComponent implements OnInit {
   chartOptionsPol: any;
   configPol: any;
 
-  tweets: string[] = [];
+  tweets: Tweets[] = [];
+
+  rangeDates!: Date[];
+  minDateValue: Date = new Date();
+  maxDateValue: Date = new Date();
   constructor(private analysisService: AnalysisService) { }
 
   ngOnInit(): void {
-    this.tweets = ["descer o cacete no controle da tv pra ver se pega = machine learning", "e agora será que esses sintomas são de rinite sinusite h1n1 h3n2 covid h2o ou hb20 hbo max", "Energia nuclear é *a* energia limpa que dá pra rolar em escala suficiente e em tempo curto o suficiente pra reduzir emissão de carbono o tanto que precisamos  Mas cês não querem nuclear por causa de acidentes que causaram MUITO menos dano que a emissão de carbono equivalente."];
+    let today = new Date();
+    this.minDateValue = new Date();
+    this.minDateValue.setDate(today.getDate() - 6);
+    this.maxDateValue = new Date();
+    this.maxDateValue.setDate(today.getDate());
+
+    this.rangeDates = [this.minDateValue, this.maxDateValue];
+
+    this.tweets = [
+      { text: "descer o cacete no controle da tv pra ver se pega = machine learning", pol: "negativo", sent: "raiva" },
+      { text: "e agora será que esses sintomas são de rinite sinusite h1n1 h3n2 covid h2o ou hb20 hbo max", pol: "negativo", sent: "raiva" },
+      { text: "Energia nuclear é *a* energia limpa que dá pra rolar em escala suficiente e em tempo curto o suficiente pra reduzir emissão de carbono o tanto que precisamos  Mas cês não querem nuclear por causa de acidentes que causaram MUITO menos dano que a emissão de carbono equivalente.", pol: "negativo", sent: "raiva" }];
     this.configSent = {
       theme: 'lara-light-indigo',
       dark: false,
@@ -162,56 +181,40 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   lowLimit() {
-    this.limit = "100"
+    this.limit = 100
   }
 
   mediumLimit() {
-    this.limit = "1000"
+    this.limit = 1000
   }
 
   highLimit() {
-    this.limit = "10000"
+    this.limit = 10000
   }
 
   submitForTweetAnalysis() {
-    /*Loader.open()
+    Loader.open()
     this.analysisService.tweetAnalysis(this.keyword, this.language, this.limit, this.since, this.until).subscribe(response => {
       response.subscribe(result => {
         console.log(JSON.parse(JSON.stringify(result)).result);
-        this.result = JSON.parse(JSON.stringify(result)).result;
-        this.data = {
-        labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
-        datasets: [
-          {
-            label: 'Sentimentos',
-            backgroundColor: 'rgba(255,99,132,0.2)',
-            borderColor: 'rgba(255,99,132,1)',
-            pointBackgroundColor: 'rgba(255,99,132,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(255,99,132,1)',
-            data: [0.2, 0.2, 0.2, 0.2, 0.2, 0]
-          }
-        ]
+        let responseJson = JSON.parse(JSON.stringify(result)).result;
+        this.dataSent = {
+          labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
+          datasets: [
+            {
+              label: 'Sentimentos',
+              backgroundColor: 'rgba(255,99,132,0.2)',
+              borderColor: 'rgba(255,99,132,1)',
+              pointBackgroundColor: 'rgba(255,99,132,1)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(255,99,132,1)',
+              data: [responseJson.tristeza, responseJson.alegria, responseJson.medo, responseJson.nojo, responseJson.raiva, responseJson.surpresa]
+            }
+          ]
         };
         Loader.close()
       })
-    })*/
-    this.dataSent = {
-      labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
-      datasets: [
-        {
-          label: 'Sentimentos',
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
-          pointBackgroundColor: 'rgba(255,99,132,1)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(255,99,132,1)',
-          data: [0.2, 0.2, 0.2, 0.2, 0.2, 0]
-        }
-      ]
-    };
-    WordCloud(document.getElementById('wordcloudCanvas'), { list: [['foo', 12], ['bar', 6]] });
+    })
   }
 }

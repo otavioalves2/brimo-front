@@ -13,7 +13,7 @@ export class AnalysisService {
     private http: HttpClient
   ) { }
 
-  tweetAnalysis(keyword: string, language: string, limit: string, since: string, until: string) {
+  tweetAnalysis(keyword: string, language: string, limit: number, since: string, until: string) {
     const requestObj = {
       "keyword": keyword,
       "language": language,
