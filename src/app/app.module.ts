@@ -18,6 +18,8 @@ import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,10 @@ import { CalendarModule } from 'primeng/calendar';
     TabViewModule,
     TableModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule
   ],
-  providers: [AnalysisService],
+  providers: [AnalysisService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

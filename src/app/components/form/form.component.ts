@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { AnalysisService } from 'src/app/services/analysis.service';
 declare const Loader: any;
@@ -37,7 +38,8 @@ export class FormBeginnerComponent implements OnInit {
   rangeDates!: Date[];
   minDateValue: Date = new Date();
   maxDateValue: Date = new Date();
-  constructor(private analysisService: AnalysisService) { }
+  constructor(private analysisService: AnalysisService,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
     let today = new Date();
@@ -96,6 +98,10 @@ export class FormBeginnerComponent implements OnInit {
         }
       ]
     };
+  }
+
+  updateDateRange(){
+    this.rangeDates = [this.minDateValue, this.maxDateValue];
   }
 
   updateChartOptionsSent() {
@@ -193,8 +199,12 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   submitForTweetAnalysis() {
+    if(+this.limit < 10){
+      this.messageService.add({severity:'error', summary:'Quantidade de tweets muito baixa', detail:'A quantidade de tweets analisados tem de ser pelo menos 10'});
+      return;
+    }
     Loader.open()
-    this.analysisService.tweetAnalysis(this.keyword, this.language, this.limit, this.since, this.until).subscribe(response => {
+    this.analysisService.tweetAnalysis(this.keyword, this.language, +this.limit, this.since, this.until).subscribe(response => {
       response.subscribe(result => {
         console.log(JSON.parse(JSON.stringify(result)).result);
         let responseJson = JSON.parse(JSON.stringify(result)).result;

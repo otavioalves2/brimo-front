@@ -1,3 +1,4 @@
+<p-toast position="bottom-center"></p-toast>
 <section class="content" [ngClass]="{'advanced': advanced == true, 'beginner': advanced == false}">
   <section class="form">
     <span class="p-float-label">
@@ -6,7 +7,7 @@
     </span>
     <span *ngIf="advanced" class="p-float-label">
       <input id="limit" [(ngModel)]="limit" type="text" pInputText>
-      <label for="limit">Limite de tweets analisados</label>
+      <label for="limit">Quantidade de tweets para análise</label>
     </span>
     <!--<span *ngIf="advanced" class="p-float-label">
       <p-inputMask inputId="since" [(ngModel)]="since" mask="9999-99-99"></p-inputMask>
@@ -17,8 +18,8 @@
       <label for="until">Até:</label>
     </span>-->
     <span *ngIf="advanced" class="p-float-label">
-      <p-calendar [minDate]="minDateValue" [maxDate]="maxDateValue" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
-      <label for="until">Data:</label>
+      <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+      <label for="until">Tweets analisados dentro deste intervalo:</label>
     </span>
 
     <section class="two-buttons-row">
