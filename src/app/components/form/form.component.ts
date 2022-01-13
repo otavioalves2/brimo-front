@@ -19,7 +19,7 @@ export interface Tweets {
 export class FormBeginnerComponent implements OnInit {
   keyword: string = "";
   language: string = "pt";
-  limit: number = 200;
+  limit: number = 10;
   since: string = "2021-11-01";
   until: string = "2021-11-02";
 
@@ -223,6 +223,7 @@ export class FormBeginnerComponent implements OnInit {
             }
           ]
         };
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseJson.words, gridSize: Math.round(16 * 600 / 400), weightFactor: 10} );
         Loader.close()
       })
     })

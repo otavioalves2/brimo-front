@@ -9,14 +9,6 @@
       <input id="limit" [(ngModel)]="limit" type="text" pInputText>
       <label for="limit">Quantidade de tweets para análise</label>
     </span>
-    <!--<span *ngIf="advanced" class="p-float-label">
-      <p-inputMask inputId="since" [(ngModel)]="since" mask="9999-99-99"></p-inputMask>
-      <label for="since">De:</label>
-    </span>
-    <span *ngIf="advanced" class="p-float-label">
-      <p-inputMask inputId="until" [(ngModel)]="until" mask="9999-99-99"></p-inputMask>
-      <label for="until">Até:</label>
-    </span>-->
     <span *ngIf="advanced" class="p-float-label">
       <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
       <label for="until">Tweets analisados dentro deste intervalo:</label>
@@ -28,11 +20,6 @@
     </section>
   </section>
 
-  <!--<section class="three-buttons-row" *ngIf="!advanced">
-    <button pButton type="button" pTooltip="Mais rápido e menos confiável" (click)="lowLimit()" icon="pi pi-angle-down" class="p-button-raised p-button-rounded"></button>
-    <button pButton type="button" pTooltip="Não tão rápido porém mais confiável" (click)="mediumLimit()" icon="pi pi-angle-up" class="p-button-raised p-button-rounded"></button>
-    <button pButton type="button" pTooltip="Devagar porém muito confiável" (click)="highLimit()" icon="pi pi-angle-double-up" class="p-button-raised p-button-rounded"></button>
-  </section>-->
   <p-tabView>
     <p-tabPanel header="Sentimentos">
       <p-chart type="radar" [data]="dataSent" [options]="chartOptionsSent" [style]="{'width': '40%'}"></p-chart>
@@ -62,5 +49,4 @@
     </p-table>
     </p-tabPanel>
 </p-tabView>
-  <!--<textarea pInputTextarea [(ngModel)]="result" [disabled]="true" [autoResize]="true"></textarea>-->
 </section>
