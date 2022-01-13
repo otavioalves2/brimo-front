@@ -31,19 +31,16 @@
       <canvas id="wordcloudCanvas" width="600" height="400"></canvas>
     </p-tabPanel>
     <p-tabPanel header="Lista de tweets">
-      <p-table [value]="tweets" responsiveLayout="scroll">
+      <p-table #table [value]="tweets" [paginator]="true" [rows]="10" 
+      currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[10,25,50]">
         <ng-template pTemplate="header">
             <tr>
                 <th>Tweet</th>
-                <th>Polarização</th>
-                <th>Sentimento</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-tweet>
             <tr>
                 <td>{{tweet.text}}</td>
-                <td>{{tweet.pol}}</td>
-                <td>{{tweet.sent}}</td>
             </tr>
         </ng-template>
     </p-table>

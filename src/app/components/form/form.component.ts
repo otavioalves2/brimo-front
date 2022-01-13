@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { AnalysisService } from 'src/app/services/analysis.service';
@@ -7,8 +7,6 @@ import * as WordCloud from 'src/assets/wordcloud2'
 
 export interface Tweets {
   text: string;
-  pol: string;
-  sent: string;
 }
 
 @Component({
@@ -24,6 +22,8 @@ export class FormBeginnerComponent implements OnInit {
   until: string = "2021-11-02";
 
   advanced: boolean = false;
+
+  @ViewChild('table') table: any;
 
   dataSent: any;
   chartOptionsSent: any;
@@ -50,10 +50,6 @@ export class FormBeginnerComponent implements OnInit {
 
     this.rangeDates = [this.minDateValue, this.maxDateValue];
 
-    this.tweets = [
-      { text: "descer o cacete no controle da tv pra ver se pega = machine learning", pol: "negativo", sent: "raiva" },
-      { text: "e agora será que esses sintomas são de rinite sinusite h1n1 h3n2 covid h2o ou hb20 hbo max", pol: "negativo", sent: "raiva" },
-      { text: "Energia nuclear é *a* energia limpa que dá pra rolar em escala suficiente e em tempo curto o suficiente pra reduzir emissão de carbono o tanto que precisamos  Mas cês não querem nuclear por causa de acidentes que causaram MUITO menos dano que a emissão de carbono equivalente.", pol: "negativo", sent: "raiva" }];
     this.configSent = {
       theme: 'lara-light-indigo',
       dark: false,
@@ -223,8 +219,12 @@ export class FormBeginnerComponent implements OnInit {
             }
           ]
         };
+        responseJson.tweets.forEach((tweet: any) => {
+          this.tweets.push({text:tweet})
+        });
         WordCloud(document.getElementById('wordcloudCanvas'), { list: responseJson.words, gridSize: Math.round(16 * 600 / 400), weightFactor: 10} );
         Loader.close()
+        this.table.reset();
       })
     })
   }
