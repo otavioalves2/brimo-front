@@ -202,8 +202,29 @@ export class FormBeginnerComponent implements OnInit {
     Loader.open()
     this.analysisService.tweetAnalysis(this.keyword, this.language, +this.limit, this.since, this.until).subscribe(response => {
       response.subscribe(result => {
-        console.log(JSON.parse(JSON.stringify(result)).result);
-        let responseJson = JSON.parse(JSON.stringify(result)).result;
+        let responseClassifyJson = JSON.parse((JSON.parse(JSON.stringify(result)).result.classify)[0]);
+        let responseCorpus = JSON.parse(JSON.stringify(result)).result.corpus;
+        let responseTweets = JSON.parse(JSON.stringify(result)).result.tweets
+        let emotions = {
+          "raiva": responseClassifyJson[0],
+          "antecipacao":responseClassifyJson[1],
+          "nojo": responseClassifyJson[2],
+          "medo": responseClassifyJson[3],
+          "alegria": responseClassifyJson[4],
+          "tristeza": responseClassifyJson[5],
+          "surpresa": responseClassifyJson[6],
+          "confianca": responseClassifyJson[7],
+          "positivo": responseClassifyJson[8],
+          "negativo": responseClassifyJson[9]
+        }
+        let total = emotions.nojo + emotions.raiva + emotions.alegria + emotions.tristeza + emotions.surpresa + emotions.medo
+        emotions.nojo = emotions.nojo > 0 ? ((emotions.nojo * 100) / total) / 100 : 0
+        emotions.raiva = emotions.raiva > 0 ? ((emotions.raiva * 100) / total) / 100 : 0
+        emotions.alegria = emotions.alegria > 0 ? ((emotions.alegria * 100) / total) / 100 : 0
+        emotions.tristeza = emotions.tristeza > 0 ? ((emotions.tristeza * 100) / total) / 100 : 0
+        emotions.surpresa = emotions.surpresa > 0 ? ((emotions.surpresa * 100) / total) / 100 : 0
+        emotions.medo = emotions.medo > 0 ? ((emotions.medo * 100) / total) / 100 : 0
+        console.log(emotions);
         this.dataSent = {
           labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
           datasets: [
@@ -215,14 +236,33 @@ export class FormBeginnerComponent implements OnInit {
               pointBorderColor: '#fff',
               pointHoverBackgroundColor: '#fff',
               pointHoverBorderColor: 'rgba(255,99,132,1)',
-              data: [responseJson.tristeza, responseJson.alegria, responseJson.medo, responseJson.nojo, responseJson.raiva, responseJson.surpresa]
+              data: [emotions.tristeza, emotions.alegria, emotions.medo, emotions.nojo, emotions.raiva, emotions.surpresa]
             }
           ]
         };
-        responseJson.tweets.forEach((tweet: any) => {
+        let polaridade = {"positivo": emotions.positivo > 0 ? ((emotions.positivo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0,
+        "negativo": emotions.negativo > 0 ? ((emotions.negativo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0}
+        this.dataPol = {
+          labels: ['Positivo', 'Negativo'],
+          datasets: [
+            {
+              data: [polaridade.positivo, polaridade.negativo],
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB"
+              ],
+              hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB"
+              ]
+            }
+          ]
+        };
+        
+        responseTweets.forEach((tweet: any) => {
           this.tweets.push({text:tweet})
         });
-        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseJson.words, gridSize: Math.round(16 * 600 / 400), weightFactor: 10} );
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: Math.round(16 * 600 / 400), weightFactor: 10} );
         Loader.close()
         this.table.reset();
       })
