@@ -17,7 +17,7 @@ export interface Tweets {
 export class FormBeginnerComponent implements OnInit {
   keyword: string = "";
   language: string = "pt";
-  limit: number = 10;
+  limit: number = 100;
   since: string = "2021-11-01";
   until: string = "2021-11-02";
 
@@ -97,9 +97,9 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   updateDateRange(){
-    this.rangeDates = [this.minDateValue, this.maxDateValue];
+    this.since = this.rangeDates[0].getFullYear() + "-"  + ("0"+(this.rangeDates[0].getMonth()+1)).slice(-2) + "-" + ("0" + this.rangeDates[0].getDate()).slice(-2) ;
+    this.until = this.rangeDates[1].getFullYear() + "-"  + ("0"+(this.rangeDates[1].getMonth()+1)).slice(-2) + "-" + ("0" + this.rangeDates[1].getDate()).slice(-2) ;
   }
-
   updateChartOptionsSent() {
     this.chartOptionsSent = this.configSent && this.configSent.dark ? this.getDarkThemeSent() : this.getLightThemeSent();
   }
@@ -263,7 +263,7 @@ export class FormBeginnerComponent implements OnInit {
           this.tweets.push({text:tweet})
         });
         WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: Math.round(16 * 600 / 400), weightFactor: 10} );
-        Loader.close()
+        Loader.close();
         this.table.reset();
       })
     })

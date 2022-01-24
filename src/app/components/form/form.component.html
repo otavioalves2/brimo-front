@@ -10,7 +10,7 @@
       <label for="limit">Quantidade de tweets para análise</label>
     </span>
     <span *ngIf="advanced" class="p-float-label">
-      <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+      <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue" [(ngModel)]="rangeDates" selectionMode="range" inputId="range"></p-calendar>
       <label for="until">Tweets analisados dentro deste intervalo:</label>
     </span>
 
