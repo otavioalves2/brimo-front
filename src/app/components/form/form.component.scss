@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-  min-height: 100vh
+  flex-direction: row;
+  height: 50vh;
 }
 .beginner{
   .form {
@@ -20,7 +20,10 @@
     justify-content: space-between;
   }
 }
-
+.tab-content{
+  width: 58.5rem;
+  height: 25rem;
+}
 .advanced{
   .form {
     display: flex;

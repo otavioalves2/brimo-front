@@ -38,6 +38,8 @@ export class FormBeginnerComponent implements OnInit {
   rangeDates!: Date[];
   minDateValue: Date = new Date();
   maxDateValue: Date = new Date();
+  multiAxisData: any;
+  multiAxisOptions: any;
   constructor(private analysisService: AnalysisService,
     private messageService: MessageService) { }
 
@@ -48,6 +50,57 @@ export class FormBeginnerComponent implements OnInit {
     this.maxDateValue = new Date();
     this.maxDateValue.setDate(today.getDate());
 
+    this.multiAxisOptions = {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#495057'
+          }
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: true
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: '#495057'
+          },
+          grid: {
+            color: '#ebedef'
+          }
+        },
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+          ticks: {
+            min: 0,
+            max: 100,
+            color: '#495057'
+          },
+          grid: {
+            color: '#ebedef'
+          }
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          grid: {
+            drawOnChartArea: false,
+            color: '#ebedef'
+          },
+          ticks: {
+            min: 0,
+            max: 100,
+            color: '#495057'
+          }
+        }
+      }
+    };
+
     this.rangeDates = [this.minDateValue, this.maxDateValue];
 
     this.configSent = {
@@ -56,21 +109,6 @@ export class FormBeginnerComponent implements OnInit {
       inputStyle: 'outlined',
       ripple: true
     };
-    this.dataSent = {
-      labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
-      datasets: [
-        {
-          label: 'Sentimentos',
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
-          pointBackgroundColor: 'rgba(255,99,132,1)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(255,99,132,1)',
-          data: [65, 59, 90, 81, 56, 55]
-        }
-      ]
-    };
 
     this.configPol = {
       theme: 'lara-light-indigo',
@@ -78,27 +116,12 @@ export class FormBeginnerComponent implements OnInit {
       inputStyle: 'outlined',
       ripple: true
     };
-    this.dataPol = {
-      labels: ['Positivo', 'Negativo'],
-      datasets: [
-        {
-          data: [300, 50],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB"
-          ]
-        }
-      ]
-    };
+    this.updateDateRange();
   }
 
-  updateDateRange(){
-    this.since = this.rangeDates[0].getFullYear() + "-"  + ("0"+(this.rangeDates[0].getMonth()+1)).slice(-2) + "-" + ("0" + this.rangeDates[0].getDate()).slice(-2) ;
-    this.until = this.rangeDates[1].getFullYear() + "-"  + ("0"+(this.rangeDates[1].getMonth()+1)).slice(-2) + "-" + ("0" + this.rangeDates[1].getDate()).slice(-2) ;
+  updateDateRange() {
+    this.since = this.rangeDates[0].getFullYear() + "-" + ("0" + (this.rangeDates[0].getMonth() + 1)).slice(-2) + "-" + ("0" + this.rangeDates[0].getDate()).slice(-2);
+    this.until = this.rangeDates[1].getFullYear() + "-" + ("0" + (this.rangeDates[1].getMonth() + 1)).slice(-2) + "-" + ("0" + this.rangeDates[1].getDate()).slice(-2);
   }
   updateChartOptionsSent() {
     this.chartOptionsSent = this.configSent && this.configSent.dark ? this.getDarkThemeSent() : this.getLightThemeSent();
@@ -195,8 +218,8 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   submitForTweetAnalysis() {
-    if(+this.limit < 10){
-      this.messageService.add({severity:'error', summary:'Quantidade de tweets muito baixa', detail:'A quantidade de tweets analisados tem de ser pelo menos 10'});
+    if (+this.limit < 10) {
+      this.messageService.add({ severity: 'error', summary: 'Quantidade de tweets muito baixa', detail: 'A quantidade de tweets analisados tem de ser pelo menos 10' });
       return;
     }
     Loader.open()
@@ -207,7 +230,7 @@ export class FormBeginnerComponent implements OnInit {
         let responseTweets = JSON.parse(JSON.stringify(result)).result.tweets
         let emotions = {
           "raiva": responseClassifyJson[0],
-          "antecipacao":responseClassifyJson[1],
+          "antecipacao": responseClassifyJson[1],
           "nojo": responseClassifyJson[2],
           "medo": responseClassifyJson[3],
           "alegria": responseClassifyJson[4],
@@ -224,7 +247,6 @@ export class FormBeginnerComponent implements OnInit {
         emotions.tristeza = emotions.tristeza > 0 ? ((emotions.tristeza * 100) / total) / 100 : 0
         emotions.surpresa = emotions.surpresa > 0 ? ((emotions.surpresa * 100) / total) / 100 : 0
         emotions.medo = emotions.medo > 0 ? ((emotions.medo * 100) / total) / 100 : 0
-        console.log(emotions);
         this.dataSent = {
           labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
           datasets: [
@@ -240,29 +262,53 @@ export class FormBeginnerComponent implements OnInit {
             }
           ]
         };
-        let polaridade = {"positivo": emotions.positivo > 0 ? ((emotions.positivo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0,
-        "negativo": emotions.negativo > 0 ? ((emotions.negativo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0}
+
+        this.multiAxisData = {
+          labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
+          datasets: [{
+            label: 'Emoções',
+            backgroundColor: [
+              '#EC407A',
+              '#AB47BC',
+              '#42A5F5',
+              '#7E57C2',
+              '#66BB6A',
+              '#FFCA28',
+              '#26A69A'
+            ],
+            yAxisID: 'y',
+            data: [emotions.tristeza, emotions.alegria, emotions.medo, emotions.nojo, emotions.raiva, emotions.surpresa]
+          }]
+        };
+
+        let polaridade = {
+          "positivo": emotions.positivo > 0 ? ((emotions.positivo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0,
+          "negativo": emotions.negativo > 0 ? ((emotions.negativo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0
+        }
         this.dataPol = {
           labels: ['Positivo', 'Negativo'],
           datasets: [
             {
               data: [polaridade.positivo, polaridade.negativo],
               backgroundColor: [
-                "#FF6384",
-                "#36A2EB"
+                "#36A2EB",
+                "#FF6384"
               ],
               hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB"
+                "#36A2EB",
+                "#FF6384"
               ]
             }
           ]
         };
+
+        this.tweets = [];
         
         responseTweets.forEach((tweet: any) => {
-          this.tweets.push({text:tweet})
+          this.tweets.push({ text: tweet })
         });
-        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: Math.round(16 * 600 / 400), weightFactor: 10} );
+
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: Math.round(16 * 600 / 400), weightFactor: 10 });
         Loader.close();
         this.table.reset();
       })
