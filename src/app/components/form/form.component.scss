@@ -1,18 +1,18 @@
 .content {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: baseline;
   flex-direction: row;
-  height: 50vh;
-  margin-top: 50px;
+  height: 100vh;
+  margin-top: 30px;
 }
-.beginner{
+.beginner {
   .form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   .three-buttons-row {
     margin-top: -325px;
     margin-left: 15px;
@@ -21,19 +21,41 @@
     justify-content: space-between;
   }
 }
-.tab-content{
+
+.word-cloud {
   width: 58.5rem;
-  height: 25rem;
+  height: 46rem;
+  display: flex;
+  justify-content: space-between;
 }
-.advanced{
+
+.lista-tweets {
+  width: 58.5rem;
+  height: 46rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-tweets{
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.graphs{
+  width: 58.5rem;
+  height: 46rem;
+  display: flex;
+  justify-content: space-between;
+}
+.advanced {
   .form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 292px;
-    margin-top: 5vh;
   }
-  
+
   .three-buttons-row {
     margin-top: -45px;
     margin-left: 15px;

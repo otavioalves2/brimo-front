@@ -13,14 +13,16 @@ export class AnalysisService {
     private http: HttpClient
   ) { }
 
-  tweetAnalysis(keyword: string, language: string, limit: number, since: string, until: string) {
+  tweetAnalysis(keyword: string, language: string, limit: number, since: string, until: string, uploadedTweets: string) {
     const requestObj = {
       "keyword": keyword,
       "language": language,
       "limit": limit, 
       "since": since,
-      "until": until
+      "until": until,
+      "uploadedTweets": uploadedTweets
     }
+
     const httpOptions: any = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'

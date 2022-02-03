@@ -18,32 +18,40 @@
     <section class="two-buttons-row">
       <p-button (click)="submitForTweetAnalysis()" label="Analisar"></p-button>
       <p-button (click)="advanced = !advanced" label="Avançado"></p-button>
+      <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true"></p-fileUpload>
     </section>
   </section>
 
   <p-tabView>
     <p-tabPanel header="Sentimentos (Gráfico em Barra)">
-      <section class="tab-content">
+      <section *ngIf="hasContent" class="graphs">
         <p-chart type="bar" width="50vw" height="40vh" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+        <p-button (onClick)="downloadImage(0)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
     <p-tabPanel header="Sentimentos (Gráfico Radar)">
-      <section class="tab-content">
+      <section *ngIf="hasContent" class="graphs">
         <p-chart type="radar" width="30vw" height="30vh" [data]="dataSent" [options]="chartOptionsSent"></p-chart>
+        <p-button (onClick)="downloadImage(1)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
     <p-tabPanel header="Polarização">
-      <section class="tab-content">
+      <section *ngIf="hasContent" class="graphs">
         <p-chart type="doughnut" width="30vw" height="30vh" [data]="dataPol" [options]="chartOptionsPol"></p-chart>
+        <p-button (onClick)="downloadImage(2)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
     <p-tabPanel header="Nuvem de palavras">
-      <section class="tab-content">
-        <canvas id="wordcloudCanvas" width="600" height="400"></canvas>
+      <section class="word-cloud">
+        <div>
+          <canvas id="wordcloudCanvas" width="800" height="600"></canvas>
+        </div>
+        <p-button *ngIf="hasContent" (onClick)="downloadImage(3)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
     <p-tabPanel header="Lista de tweets">
-      <section class="tab-content">
+      <section *ngIf="hasContent" class="lista-tweets">
+        <p-button class="save-tweets" (onClick)="downloadTweets()">Salvar tweets</p-button>
         <p-table #table scrollHeight="flex" [value]="tweets" [paginator]="true" [rows]="10"
           currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
           [rowsPerPageOptions]="[5,10]">

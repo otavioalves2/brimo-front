@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AnalysisService } from 'src/app/services/analysis.service';
 declare const Loader: any;
 import * as WordCloud from 'src/assets/wordcloud2'
+import * as FileSaver from 'file-saver';
 
 export interface Tweets {
   text: string;
@@ -24,6 +25,9 @@ export class FormBeginnerComponent implements OnInit {
   advanced: boolean = false;
 
   @ViewChild('table') table: any;
+
+  hasContent: boolean = false;
+  showSaveButton: boolean = false;
 
   dataSent: any;
   chartOptionsSent: any;
@@ -217,13 +221,13 @@ export class FormBeginnerComponent implements OnInit {
     this.limit = 10000
   }
 
-  submitForTweetAnalysis() {
+  submitForTweetAnalysis(uploadedTweets = "") {
     if (+this.limit < 10) {
       this.messageService.add({ severity: 'error', summary: 'Quantidade de tweets muito baixa', detail: 'A quantidade de tweets analisados tem de ser pelo menos 10' });
       return;
     }
     Loader.open()
-    this.analysisService.tweetAnalysis(this.keyword, this.language, +this.limit, this.since, this.until).subscribe(response => {
+    this.analysisService.tweetAnalysis(this.keyword, this.language, +this.limit, this.since, this.until, uploadedTweets).subscribe(response => {
       response.subscribe(result => {
         let responseClassifyJson = JSON.parse((JSON.parse(JSON.stringify(result)).result.classify)[0]);
         let responseCorpus = JSON.parse(JSON.stringify(result)).result.corpus;
@@ -303,15 +307,42 @@ export class FormBeginnerComponent implements OnInit {
         };
 
         this.tweets = [];
-        
+
         responseTweets.forEach((tweet: any) => {
           this.tweets.push({ text: tweet })
         });
 
+        this.hasContent = true;
+        
         WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: Math.round(16 * 600 / 400), weightFactor: 10 });
         Loader.close();
         this.table.reset();
       })
     })
+  }
+
+  myUploader(event: { files: any; }) {
+    let reader = new FileReader();
+
+    reader.readAsText(event.files[0]);
+
+    reader.onload = (tweetsJsonArray) => {
+      let result = tweetsJsonArray?.target?.result as string
+      this.submitForTweetAnalysis(result)
+    }
+  }
+
+  downloadTweets(){
+    const blob = new Blob(this.tweets.map(tweet => {return tweet.text + '\n'}), {type: "text/plain;charset=utf-8"});
+    FileSaver.saveAs(blob, "brimo_tweets.txt");
+  }
+
+  downloadImage(graphIndex: number){
+    var canvas = document.getElementsByTagName('canvas') as HTMLCollectionOf<HTMLCanvasElement>;
+    canvas[graphIndex].toBlob(blob => {
+      if(blob){
+        FileSaver.saveAs(blob, "image.png");
+      }
+    });
   }
 }
