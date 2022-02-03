@@ -21,6 +21,7 @@ import { CalendarModule } from 'primeng/calendar';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {FileUploadModule} from 'primeng/fileupload';
+import {DividerModule} from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {FileUploadModule} from 'primeng/fileupload';
     FooterComponent
   ],
   imports: [
+    DividerModule,
     FileUploadModule,
     BrowserModule,
     HttpClientModule,

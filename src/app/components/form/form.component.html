@@ -1,24 +1,62 @@
 <p-toast position="bottom-center"></p-toast>
 <section class="content" [ngClass]="{'advanced': advanced == true, 'beginner': advanced == false}">
   <section class="form">
-    <span class="p-float-label">
-      <input id="keyword" [(ngModel)]="keyword" type="text" pInputText>
-      <label for="keyword">Palavra-chave</label>
-    </span>
-    <span *ngIf="advanced" class="p-float-label">
-      <input id="limit" [(ngModel)]="limit" type="text" pInputText>
-      <label for="limit">Quantidade de tweets para análise</label>
-    </span>
-    <span *ngIf="advanced" class="p-float-label">
-      <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue"
-        [(ngModel)]="rangeDates" selectionMode="range" inputId="range"></p-calendar>
-      <label for="until">Tweets analisados dentro deste intervalo:</label>
-    </span>
+    <section class="twitter-section">
+      <h2 style="
+      margin: 1.5rem 0 1rem;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color emoji;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #495057;
+      ">Análise via Twitter</h2>
+      <span style="margin-top:40px;" class="p-float-label">
+        <input id="keyword" [(ngModel)]="keyword" type="text" pInputText>
+        <label for="keyword">Palavra-chave</label>
+      </span>
+      <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">
+        <input id="limit" [(ngModel)]="limit" type="text" pInputText>
+        <label for="limit">Quantidade de tweets para análise</label>
+      </span>
+      <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">
+        <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue"
+          [(ngModel)]="rangeDates" selectionMode="range" inputId="range"></p-calendar>
+        <label for="until">Tweets analisados dentro deste intervalo:</label>
+      </span>
+  
+      <section class="two-buttons-row">
+        <p-button (click)="submitForTweetAnalysis()" label="Analisar"></p-button>
+        <p-button (click)="advanced = !advanced" label="Avançado"></p-button>
+      </section>
+    </section>
 
-    <section class="two-buttons-row">
-      <p-button (click)="submitForTweetAnalysis()" label="Analisar"></p-button>
-      <p-button (click)="advanced = !advanced" label="Avançado"></p-button>
-      <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true"></p-fileUpload>
+    <p-divider align="center">
+      <b style="
+      margin: 1.5rem 0 1rem;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color emoji;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #495057;
+      ">OU</b>
+    </p-divider>
+    <section class="upload-section">
+      <h2 style="
+      margin: 1.5rem 0 1rem;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color emoji;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #495057;
+      ">Envie seus dados <i class="pi pi-info-circle" [escape]="false" pTooltip="
+      <ul>
+        <li>O arquivo deve ser enviado em formato txt</li>
+        <li>Os dados devem ser separados por vírgula, ex.:</li>
+        <ul>
+          <li>Este é um texto a ser analisado, Este também é um texto a ser analisado, Por fim este também será analisado</li>
+        </ul>
+        <li>Então assim que o arquivo for enviado a análise de sentimentos dos dados enviados será feita.</li>
+      </ul>
+      " style="font-size: 1.3rem;
+    font-weight: bold;"> </i></h2>
+      <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true" chooseLabel="Escolha um arquivo"></p-fileUpload>
     </section>
   </section>
 

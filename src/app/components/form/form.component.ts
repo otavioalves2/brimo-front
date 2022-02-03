@@ -314,9 +314,11 @@ export class FormBeginnerComponent implements OnInit {
 
         this.hasContent = true;
         
-        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: Math.round(16 * 600 / 400), weightFactor: 10 });
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 18, weightFactor: 5 });
         Loader.close();
-        this.table.reset();
+        if(this.table){
+          this.table.reset();
+        }
       })
     })
   }
