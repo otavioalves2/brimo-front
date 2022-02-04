@@ -341,10 +341,23 @@ export class FormBeginnerComponent implements OnInit {
 
   downloadImage(graphIndex: number){
     var canvas = document.getElementsByTagName('canvas') as HTMLCollectionOf<HTMLCanvasElement>;
-    canvas[graphIndex].toBlob(blob => {
-      if(blob){
-        FileSaver.saveAs(blob, "image.png");
-      }
-    });
+    let context = canvas[graphIndex].getContext('2d');
+    // set compositing to draw all new pixels (background) UNDER
+    // the existing chart pixels
+    if(context){
+      context.globalCompositeOperation='destination-over';
+  
+      // fill the main canvas with a background
+      context.fillStyle='white';
+      context.fillRect(0,0,canvas[graphIndex].width,canvas[graphIndex].height)
+  
+      // always clean up ... reset compositing to default
+      context.globalCompositeOperation='source-over';
+      canvas[graphIndex].toBlob(blob => {
+        if(blob){
+          FileSaver.saveAs(blob, "image.png");
+        }
+      });
+    }
   }
 }

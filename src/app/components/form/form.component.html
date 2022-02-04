@@ -63,7 +63,7 @@
   <p-tabView>
     <p-tabPanel header="Sentimentos (Gráfico em Barra)">
       <section *ngIf="hasContent" class="graphs">
-        <p-chart type="bar" width="50vw" height="40vh" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+        <p-chart type="bar" width="30vw" height="30vh" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
         <p-button (onClick)="downloadImage(0)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
