@@ -14,7 +14,8 @@
         <label for="keyword">Palavra-chave</label>
       </span>
       <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">
-        <input id="limit" [(ngModel)]="limit" type="text" pInputText>
+        <input id="limit" [(ngModel)]="limit" type="text" pInputText readonly>
+        <p-slider [(ngModel)]="limit" [min]="100" [max]="1000"></p-slider>
         <label for="limit">Quantidade de tweets para análise</label>
       </span>
       <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">

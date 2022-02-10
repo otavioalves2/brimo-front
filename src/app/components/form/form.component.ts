@@ -60,10 +60,6 @@ export class FormBeginnerComponent implements OnInit {
           labels: {
             color: '#495057'
           }
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: true
         }
       },
       scales: {
@@ -76,30 +72,11 @@ export class FormBeginnerComponent implements OnInit {
           }
         },
         y: {
-          type: 'linear',
-          display: true,
-          position: 'left',
           ticks: {
-            min: 0,
-            max: 100,
             color: '#495057'
           },
           grid: {
             color: '#ebedef'
-          }
-        },
-        y1: {
-          type: 'linear',
-          display: true,
-          position: 'right',
-          grid: {
-            drawOnChartArea: false,
-            color: '#ebedef'
-          },
-          ticks: {
-            min: 0,
-            max: 100,
-            color: '#495057'
           }
         }
       }
@@ -280,7 +257,6 @@ export class FormBeginnerComponent implements OnInit {
               '#FFCA28',
               '#26A69A'
             ],
-            yAxisID: 'y',
             data: [emotions.tristeza, emotions.alegria, emotions.medo, emotions.nojo, emotions.raiva, emotions.surpresa]
           }]
         };
@@ -313,10 +289,42 @@ export class FormBeginnerComponent implements OnInit {
         });
 
         this.hasContent = true;
-        
-        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 18, weightFactor: 5 });
+        let weight = Math.floor(+this.limit/100)
+        switch (weight) {
+          case 1:
+            weight = 5
+            break;
+          case 2:
+            weight = 5
+            break;
+          case 3:
+            weight = 4
+            break;
+          case 4:
+            weight = 4
+            break;
+          case 5:
+            weight = 3
+            break;
+          case 6:
+            weight = 3
+            break;
+          case 7:
+            weight = 2
+            break;
+          case 8:
+            weight = 2
+            break;
+          case 9:
+            weight = 1
+            break;
+          case 10:
+            weight = 1
+            break;
+        }
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 18, weightFactor: weight });
         Loader.close();
-        if(this.table){
+        if (this.table) {
           this.table.reset();
         }
       })
@@ -334,27 +342,27 @@ export class FormBeginnerComponent implements OnInit {
     }
   }
 
-  downloadTweets(){
-    const blob = new Blob(this.tweets.map(tweet => {return tweet.text + '\n'}), {type: "text/plain;charset=utf-8"});
+  downloadTweets() {
+    const blob = new Blob(this.tweets.map(tweet => { return tweet.text + '\n' }), { type: "text/plain;charset=utf-8" });
     FileSaver.saveAs(blob, "brimo_tweets.txt");
   }
 
-  downloadImage(graphIndex: number){
+  downloadImage(graphIndex: number) {
     var canvas = document.getElementsByTagName('canvas') as HTMLCollectionOf<HTMLCanvasElement>;
     let context = canvas[graphIndex].getContext('2d');
     // set compositing to draw all new pixels (background) UNDER
     // the existing chart pixels
-    if(context){
-      context.globalCompositeOperation='destination-over';
-  
+    if (context) {
+      context.globalCompositeOperation = 'destination-over';
+
       // fill the main canvas with a background
-      context.fillStyle='white';
-      context.fillRect(0,0,canvas[graphIndex].width,canvas[graphIndex].height)
-  
+      context.fillStyle = 'white';
+      context.fillRect(0, 0, canvas[graphIndex].width, canvas[graphIndex].height)
+
       // always clean up ... reset compositing to default
-      context.globalCompositeOperation='source-over';
+      context.globalCompositeOperation = 'source-over';
       canvas[graphIndex].toBlob(blob => {
-        if(blob){
+        if (blob) {
           FileSaver.saveAs(blob, "image.png");
         }
       });
