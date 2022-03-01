@@ -44,6 +44,12 @@ export class FormBeginnerComponent implements OnInit {
   maxDateValue: Date = new Date();
   multiAxisData: any;
   multiAxisOptions: any;
+
+  textToAnalysis: string = '';
+
+  isTweetAnalysis: boolean = true;
+
+  autoResize: boolean = true;
   constructor(private analysisService: AnalysisService,
     private messageService: MessageService) { }
 
@@ -57,13 +63,29 @@ export class FormBeginnerComponent implements OnInit {
     this.multiAxisOptions = {
       plugins: {
         legend: {
-          labels: {
-            color: '#495057'
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: (tooltipItem: any, data: any) => {
+              return tooltipItem.parsed.y + '%';
+            }
+          }
+        },
+        title: {
+          text: 'Percentual de cada emoção nos tweets analisados',
+          display: true,
+          font: {
+            size: 18
           }
         }
       },
       scales: {
         x: {
+          title: {
+            display: true,
+            text: "Emoções"
+          },
           ticks: {
             color: '#495057'
           },
@@ -72,8 +94,15 @@ export class FormBeginnerComponent implements OnInit {
           }
         },
         y: {
+          title: {
+            display: true,
+            text: "Porcentagem (%)"
+          },
           ticks: {
-            color: '#495057'
+            color: '#495057',
+            callback: (value: number) => {
+              return value + '%';
+            }
           },
           grid: {
             color: '#ebedef'
@@ -97,6 +126,9 @@ export class FormBeginnerComponent implements OnInit {
       inputStyle: 'outlined',
       ripple: true
     };
+
+    this.updateChartOptionsSent();
+    this.updateChartOptionsPol();
     this.updateDateRange();
   }
 
@@ -112,8 +144,20 @@ export class FormBeginnerComponent implements OnInit {
     return {
       plugins: {
         legend: {
-          labels: {
-            color: '#495057'
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: (tooltipItem: any, data: any) => {
+              return tooltipItem.parsed.r + '%';
+            }
+          }
+        },
+        title: {
+          text: 'Percentual de cada emoção nos tweets analisados',
+          display: true,
+          font: {
+            size: 18
           }
         }
       },
@@ -169,6 +213,20 @@ export class FormBeginnerComponent implements OnInit {
           labels: {
             color: '#495057'
           }
+        },
+        tooltip: {
+          callbacks: {
+            label: (tooltipItem: any, data: any) => {
+              return tooltipItem.parsed + '%';
+            }
+          }
+        },
+        title: {
+          text: 'Polarização dos sentimentos',
+          display: true,
+          font: {
+            size: 18
+          }
         }
       }
     }
@@ -199,9 +257,11 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   submitForTweetAnalysis(uploadedTweets = "") {
-    if (+this.limit < 10) {
-      this.messageService.add({ severity: 'error', summary: 'Quantidade de tweets muito baixa', detail: 'A quantidade de tweets analisados tem de ser pelo menos 10' });
-      return;
+    if (+this.limit < 100) {
+      this.limit = 100
+    }
+    if(+this.limit > 1000){
+      this.limit = 1000
     }
     Loader.open()
     this.analysisService.tweetAnalysis(this.keyword, this.language, +this.limit, this.since, this.until, uploadedTweets).subscribe(response => {
@@ -239,7 +299,7 @@ export class FormBeginnerComponent implements OnInit {
               pointBorderColor: '#fff',
               pointHoverBackgroundColor: '#fff',
               pointHoverBorderColor: 'rgba(255,99,132,1)',
-              data: [emotions.tristeza, emotions.alegria, emotions.medo, emotions.nojo, emotions.raiva, emotions.surpresa]
+              data: [(emotions.tristeza * 100).toFixed(0), (emotions.alegria * 100).toFixed(0), (emotions.medo * 100).toFixed(0), (emotions.nojo * 100).toFixed(0), (emotions.raiva * 100).toFixed(0), (emotions.surpresa * 100).toFixed(0)]
             }
           ]
         };
@@ -247,7 +307,6 @@ export class FormBeginnerComponent implements OnInit {
         this.multiAxisData = {
           labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
           datasets: [{
-            label: 'Emoções',
             backgroundColor: [
               '#EC407A',
               '#AB47BC',
@@ -257,7 +316,7 @@ export class FormBeginnerComponent implements OnInit {
               '#FFCA28',
               '#26A69A'
             ],
-            data: [emotions.tristeza, emotions.alegria, emotions.medo, emotions.nojo, emotions.raiva, emotions.surpresa]
+            data: [(emotions.tristeza * 100).toFixed(0), (emotions.alegria * 100).toFixed(0), (emotions.medo * 100).toFixed(0), (emotions.nojo * 100).toFixed(0), (emotions.raiva * 100).toFixed(0), (emotions.surpresa * 100).toFixed(0)]
           }]
         };
 
@@ -269,7 +328,7 @@ export class FormBeginnerComponent implements OnInit {
           labels: ['Positivo', 'Negativo'],
           datasets: [
             {
-              data: [polaridade.positivo, polaridade.negativo],
+              data: [(polaridade.positivo * 100).toFixed(0), (polaridade.negativo * 100).toFixed(0)],
               backgroundColor: [
                 "#36A2EB",
                 "#FF6384"
@@ -289,45 +348,110 @@ export class FormBeginnerComponent implements OnInit {
         });
 
         this.hasContent = true;
-        let weight = Math.floor(+this.limit/100)
-        switch (weight) {
-          case 1:
-            weight = 5
-            break;
-          case 2:
-            weight = 5
-            break;
-          case 3:
-            weight = 4
-            break;
-          case 4:
-            weight = 4
-            break;
-          case 5:
-            weight = 3
-            break;
-          case 6:
-            weight = 3
-            break;
-          case 7:
-            weight = 2
-            break;
-          case 8:
-            weight = 2
-            break;
-          case 9:
-            weight = 1
-            break;
-          case 10:
-            weight = 1
-            break;
-        }
-        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 18, weightFactor: weight });
+        this.isTweetAnalysis = true;
+        responseCorpus = responseCorpus.map((tupla: [string, number]) => {
+          tupla[1] > 100 ? tupla[1] = 100 : ''; 
+          return tupla;
+        })
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 10, weightFactor: 20, drawOutOfBound: false, shrinkToFit: true });
         Loader.close();
         if (this.table) {
           this.table.reset();
         }
       })
+    })
+  }
+
+  submitForTextAnalysis() {
+    Loader.open()
+    this.analysisService.textAnalysis(this.textToAnalysis).subscribe(result => {
+      let responseClassifyJson = JSON.parse((JSON.parse(JSON.stringify(result)).result.classify)[0]);
+      let responseCorpus = JSON.parse(JSON.stringify(result)).result.corpus;
+      let emotions = {
+        "raiva": responseClassifyJson[0],
+        "antecipacao": responseClassifyJson[1],
+        "nojo": responseClassifyJson[2],
+        "medo": responseClassifyJson[3],
+        "alegria": responseClassifyJson[4],
+        "tristeza": responseClassifyJson[5],
+        "surpresa": responseClassifyJson[6],
+        "confianca": responseClassifyJson[7],
+        "positivo": responseClassifyJson[8],
+        "negativo": responseClassifyJson[9]
+      }
+      let total = emotions.nojo + emotions.raiva + emotions.alegria + emotions.tristeza + emotions.surpresa + emotions.medo
+      emotions.nojo = emotions.nojo > 0 ? ((emotions.nojo * 100) / total) / 100 : 0
+      emotions.raiva = emotions.raiva > 0 ? ((emotions.raiva * 100) / total) / 100 : 0
+      emotions.alegria = emotions.alegria > 0 ? ((emotions.alegria * 100) / total) / 100 : 0
+      emotions.tristeza = emotions.tristeza > 0 ? ((emotions.tristeza * 100) / total) / 100 : 0
+      emotions.surpresa = emotions.surpresa > 0 ? ((emotions.surpresa * 100) / total) / 100 : 0
+      emotions.medo = emotions.medo > 0 ? ((emotions.medo * 100) / total) / 100 : 0
+      this.dataSent = {
+        labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
+        datasets: [
+          {
+            label: 'Sentimentos',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            pointBackgroundColor: 'rgba(255,99,132,1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(255,99,132,1)',
+            data: [(emotions.tristeza * 100).toFixed(0), (emotions.alegria * 100).toFixed(0), (emotions.medo * 100).toFixed(0), (emotions.nojo * 100).toFixed(0), (emotions.raiva * 100).toFixed(0), (emotions.surpresa * 100).toFixed(0)]
+          }
+        ]
+      };
+
+      this.multiAxisData = {
+        labels: ['Tristeza', 'Alegria', 'Medo', 'Nojo', 'Raiva', 'Surpresa'],
+        datasets: [{
+          backgroundColor: [
+            '#EC407A',
+            '#AB47BC',
+            '#42A5F5',
+            '#7E57C2',
+            '#66BB6A',
+            '#FFCA28',
+            '#26A69A'
+          ],
+          data: [(emotions.tristeza * 100).toFixed(0), (emotions.alegria * 100).toFixed(0), (emotions.medo * 100).toFixed(0), (emotions.nojo * 100).toFixed(0), (emotions.raiva * 100).toFixed(0), (emotions.surpresa * 100).toFixed(0)]
+        }]
+      };
+
+      let polaridade = {
+        "positivo": emotions.positivo > 0 ? ((emotions.positivo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0,
+        "negativo": emotions.negativo > 0 ? ((emotions.negativo * 100) / (emotions.positivo + emotions.negativo)) / 100 : 0
+      }
+      this.dataPol = {
+        labels: ['Positivo', 'Negativo'],
+        datasets: [
+          {
+            data: [(polaridade.positivo * 100).toFixed(0), (polaridade.negativo * 100).toFixed(0)],
+            backgroundColor: [
+              "#36A2EB",
+              "#FF6384"
+            ],
+            hoverBackgroundColor: [
+              "#36A2EB",
+              "#FF6384"
+            ]
+          }
+        ]
+      };
+
+      this.tweets = [];
+
+      this.hasContent = true;
+      this.isTweetAnalysis = false;
+      responseCorpus = responseCorpus.map((tupla: [string, number]) => {
+        tupla[1] > 100 ? tupla[1] = 100 : ''; 
+        return tupla;
+      })
+      WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 10, weightFactor: 20, drawOutOfBound: false, shrinkToFit: true });
+      Loader.close();
+      if (this.table) {
+        this.table.reset();
+      }
     })
   }
 

@@ -12,6 +12,28 @@ export class AnalysisService {
   constructor(
     private http: HttpClient
   ) { }
+  
+  textAnalysis(text: string){
+    const requestObj = {
+      "text": text
+    }
+
+    const httpOptions: any = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    httpOptions.body = requestObj
+    return this.http.post(`${environment.root}/classify/text`, requestObj)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(e => {
+          return throwError(e);
+        })
+      );
+  }
 
   tweetAnalysis(keyword: string, language: string, limit: number, since: string, until: string, uploadedTweets: string) {
     const requestObj = {

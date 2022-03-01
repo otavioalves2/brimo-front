@@ -10,16 +10,16 @@
       color: #495057;
       ">Análise via Twitter</h2>
       <span style="margin-top:40px;" class="p-float-label">
-        <input id="keyword" [(ngModel)]="keyword" type="text" pInputText>
+        <input class="inputs" id="keyword" [(ngModel)]="keyword" type="text" (keydown.enter)="submitForTweetAnalysis()" pInputText>
         <label for="keyword">Palavra-chave</label>
       </span>
       <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">
-        <input id="limit" [(ngModel)]="limit" type="text" pInputText readonly>
+        <input class="inputs"  id="limit" [(ngModel)]="limit" type="text" pInputText>
         <p-slider [(ngModel)]="limit" [min]="100" [max]="1000"></p-slider>
         <label for="limit">Quantidade de tweets para análise</label>
       </span>
       <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">
-        <p-calendar (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue"
+        <p-calendar class="inputs" (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue"
           [(ngModel)]="rangeDates" selectionMode="range" inputId="range"></p-calendar>
         <label for="until">Tweets analisados dentro deste intervalo:</label>
       </span>
@@ -46,37 +46,29 @@
       font-weight: 600;
       line-height: 1.2;
       color: #495057;
-      ">Envie seus dados <i class="pi pi-info-circle" [escape]="false" pTooltip="
-      <ul>
-        <li>O arquivo deve ser enviado em formato txt</li>
-        <li>Os dados devem ser separados por vírgula, ex.:</li>
-        <ul>
-          <li>Este é um texto a ser analisado, Este também é um texto a ser analisado, Por fim este também será analisado</li>
-        </ul>
-        <li>Então assim que o arquivo for enviado a análise de sentimentos dos dados enviados será feita.</li>
-      </ul>
-      " style="font-size: 1.3rem;
-    font-weight: bold;"> </i></h2>
-      <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true" chooseLabel="Escolha um arquivo"></p-fileUpload>
+      ">Analise seu texto</h2>
+      <!-- <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true" chooseLabel="Escolha um arquivo"></p-fileUpload> -->
+      <textarea style="margin-bottom: 10px;" (keydown.enter)="submitForTextAnalysis()" pInputTextarea [rows]="5" [cols]="31" [autoResize]="autoResize" [(ngModel)]="textToAnalysis"></textarea>
+      <p-button (click)="submitForTextAnalysis()" label="Analisar"></p-button>
     </section>
   </section>
 
   <p-tabView>
     <p-tabPanel header="Sentimentos (Gráfico em Barra)">
       <section *ngIf="hasContent" class="graphs">
-        <p-chart type="bar" width="30vw" height="30vh" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+        <p-chart type="bar" [style]="{'width': '80%', 'height': '80%'}" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
         <p-button (onClick)="downloadImage(0)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
     <p-tabPanel header="Sentimentos (Gráfico Radar)">
       <section *ngIf="hasContent" class="graphs">
-        <p-chart type="radar" width="30vw" height="30vh" [data]="dataSent" [options]="chartOptionsSent"></p-chart>
+        <p-chart type="radar" [style]="{'width': '60%', 'height': '60%'}" [data]="dataSent" [options]="chartOptionsSent"></p-chart>
         <p-button (onClick)="downloadImage(1)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
     <p-tabPanel header="Polarização">
       <section *ngIf="hasContent" class="graphs">
-        <p-chart type="doughnut" width="30vw" height="30vh" [data]="dataPol" [options]="chartOptionsPol"></p-chart>
+        <p-chart type="doughnut" [style]="{'width': '60%', 'height': '60%'}" [data]="dataPol" [options]="chartOptionsPol"></p-chart>
         <p-button (onClick)="downloadImage(2)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
@@ -88,7 +80,7 @@
         <p-button *ngIf="hasContent" (onClick)="downloadImage(3)">Salvar gráfico</p-button>
       </section>
     </p-tabPanel>
-    <p-tabPanel header="Lista de tweets">
+    <p-tabPanel *ngIf="isTweetAnalysis" header="Lista de tweets">
       <section *ngIf="hasContent" class="lista-tweets">
         <p-button class="save-tweets" (onClick)="downloadTweets()">Salvar tweets</p-button>
         <p-table #table scrollHeight="flex" [value]="tweets" [paginator]="true" [rows]="10"
