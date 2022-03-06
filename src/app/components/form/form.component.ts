@@ -49,7 +49,9 @@ export class FormBeginnerComponent implements OnInit {
 
   isTweetAnalysis: boolean = true;
 
-  autoResize: boolean = true;
+  selectOtherMonths: boolean = true;
+
+  autoResize: boolean = false;
   constructor(private analysisService: AnalysisService,
     private messageService: MessageService) { }
 
@@ -257,6 +259,9 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   submitForTweetAnalysis(uploadedTweets = "") {
+    if(this.keyword.length <= 0){
+      return;
+    }
     if (+this.limit < 100) {
       this.limit = 100
     }
@@ -264,6 +269,7 @@ export class FormBeginnerComponent implements OnInit {
       this.limit = 1000
     }
     Loader.open()
+    this.textToAnalysis = '';
     this.analysisService.tweetAnalysis(this.keyword, this.language, +this.limit, this.since, this.until, uploadedTweets).subscribe(response => {
       response.subscribe(result => {
         let responseClassifyJson = JSON.parse((JSON.parse(JSON.stringify(result)).result.classify)[0]);
@@ -350,10 +356,18 @@ export class FormBeginnerComponent implements OnInit {
         this.hasContent = true;
         this.isTweetAnalysis = true;
         responseCorpus = responseCorpus.map((tupla: [string, number]) => {
-          tupla[1] > 100 ? tupla[1] = 100 : ''; 
+          if(tupla[1] >= 35){
+            tupla[1] = 35;
+          }else if(tupla[1] >= 25){
+            tupla[1] = 25;
+          }else{
+            if((tupla[1]+15) < 25){
+              tupla[1] += 15;
+            }
+          }
           return tupla;
         })
-        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 10, weightFactor: 20, drawOutOfBound: false, shrinkToFit: true });
+        WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 10, weightFactor: 10, drawOutOfBound: false, shrinkToFit: true });
         Loader.close();
         if (this.table) {
           this.table.reset();
@@ -362,8 +376,19 @@ export class FormBeginnerComponent implements OnInit {
     })
   }
 
+  resetTweetConfig(){
+    this.keyword = "";
+    this.language = "pt";
+    this.limit = 100;
+    this.updateDateRange()
+  }
+
   submitForTextAnalysis() {
+    if(this.keyword.length <= 0){
+      return;
+    }
     Loader.open()
+    this.resetTweetConfig()
     this.analysisService.textAnalysis(this.textToAnalysis).subscribe(result => {
       let responseClassifyJson = JSON.parse((JSON.parse(JSON.stringify(result)).result.classify)[0]);
       let responseCorpus = JSON.parse(JSON.stringify(result)).result.corpus;
@@ -444,10 +469,18 @@ export class FormBeginnerComponent implements OnInit {
       this.hasContent = true;
       this.isTweetAnalysis = false;
       responseCorpus = responseCorpus.map((tupla: [string, number]) => {
-        tupla[1] > 100 ? tupla[1] = 100 : ''; 
+        if(tupla[1] >= 35){
+          tupla[1] = 35;
+        }else if(tupla[1] >= 25){
+          tupla[1] = 25;
+        }else{
+          if((tupla[1]+15) < 25){
+            tupla[1] += 15;
+          }
+        }
         return tupla;
       })
-      WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 10, weightFactor: 20, drawOutOfBound: false, shrinkToFit: true });
+      WordCloud(document.getElementById('wordcloudCanvas'), { list: responseCorpus, gridSize: 10, weightFactor: 10, drawOutOfBound: false, shrinkToFit: true });
       Loader.close();
       if (this.table) {
         this.table.reset();

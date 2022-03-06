@@ -19,14 +19,14 @@
         <label for="limit">Quantidade de tweets para análise</label>
       </span>
       <span style="margin-top:40px;" *ngIf="advanced" class="p-float-label">
-        <p-calendar class="inputs" (onClose)="updateDateRange()" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue"
+        <p-calendar class="inputs" (onClose)="updateDateRange()" [selectOtherMonths]="selectOtherMonths" dateFormat="dd.mm.yy" [minDate]="minDateValue" [maxDate]="maxDateValue"
           [(ngModel)]="rangeDates" selectionMode="range" inputId="range"></p-calendar>
         <label for="until">Tweets analisados dentro deste intervalo:</label>
       </span>
   
       <section class="two-buttons-row">
-        <p-button (click)="submitForTweetAnalysis()" label="Analisar"></p-button>
         <p-button (click)="advanced = !advanced" label="Avançado"></p-button>
+        <button pButton type="button" label="Analisar" (click)="submitForTweetAnalysis()" class="p-button-success"></button>
       </section>
     </section>
 
@@ -48,8 +48,12 @@
       color: #495057;
       ">Analise seu texto</h2>
       <!-- <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true" chooseLabel="Escolha um arquivo"></p-fileUpload> -->
-      <textarea style="margin-bottom: 10px;" (keydown.enter)="submitForTextAnalysis()" pInputTextarea [rows]="5" [cols]="31" [autoResize]="autoResize" [(ngModel)]="textToAnalysis"></textarea>
-      <p-button (click)="submitForTextAnalysis()" label="Analisar"></p-button>
+      <textarea style="margin-bottom: 10px;width: 400px; height:500px; resize: none;overflow-y: scroll;" (keydown.enter)="submitForTextAnalysis()" pInputTextarea [autoResize]="autoResize" [(ngModel)]="textToAnalysis"></textarea>
+      
+      <section class="two-buttons-row">
+        <p-button (click)="textToAnalysis = ''" label="Limpar"></p-button>
+        <button pButton type="button" label="Analisar" (click)="submitForTextAnalysis()" class="p-button-success"></button>
+      </section>
     </section>
   </section>
 
