@@ -384,7 +384,7 @@ export class FormBeginnerComponent implements OnInit {
   }
 
   submitForTextAnalysis() {
-    if(this.keyword.length <= 0){
+    if(this.textToAnalysis.length <= 0){
       return;
     }
     Loader.open()

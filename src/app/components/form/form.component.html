@@ -57,7 +57,7 @@
     </section>
   </section>
 
-  <p-tabView>
+  <p-tabView [scrollable]="true">
     <p-tabPanel header="Sentimentos (Gráfico em Barra)">
       <section *ngIf="hasContent" class="graphs">
         <p-chart type="bar" [style]="{'width': '80%', 'height': '80%'}" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
