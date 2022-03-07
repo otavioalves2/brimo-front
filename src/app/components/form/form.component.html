@@ -48,7 +48,7 @@
       color: #495057;
       ">Analise seu texto</h2>
       <!-- <p-fileUpload name="myfile[]" accept=".txt" [customUpload]="true" (uploadHandler)="myUploader($event)" mode="basic" [auto]="true" chooseLabel="Escolha um arquivo"></p-fileUpload> -->
-      <textarea style="margin-bottom: 10px;width: 400px; height:500px; resize: none;overflow-y: scroll;" (keydown.enter)="submitForTextAnalysis()" pInputTextarea [autoResize]="autoResize" [(ngModel)]="textToAnalysis"></textarea>
+      <textarea style="margin-bottom: 10px;width: 400px; height:300px; resize: none;overflow-y: scroll;" (keydown.enter)="submitForTextAnalysis()" pInputTextarea [autoResize]="autoResize" [(ngModel)]="textToAnalysis"></textarea>
       
       <section class="two-buttons-row">
         <p-button (click)="textToAnalysis = ''" label="Limpar"></p-button>

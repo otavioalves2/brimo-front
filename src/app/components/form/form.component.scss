@@ -1,21 +1,19 @@
 @media screen and (max-width: 1680px){
   p-tabView{
-    width: 50vw;
+    width: 50vw !important;
   }
   .graphs{
     width: 38.5rem !important;
   }
   .word-cloud {
     width: 38.5rem !important;
-    display: flex !important;
-    flex-direction: column !important;
   }
   .lista-tweets {
     width: 38.5rem !important; 
   }
   #wordcloudCanvas{
-    width: 600px !important;
-    height: 400px !important;
+    width: 29.5rem !important;
+    height: 19rem !important;
   }
 }
 p-tabView{
