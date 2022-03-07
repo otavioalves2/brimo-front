@@ -1,4 +1,4 @@
-@media screen and (max-width: 1368px){
+@media screen and (max-width: 1680px){
   p-tabView{
     width: 50vw;
   }
@@ -17,6 +17,9 @@
     width: 600px !important;
     height: 400px !important;
   }
+}
+p-tabView{
+  width: 55vw;
 }
 .content {
   display: flex;
