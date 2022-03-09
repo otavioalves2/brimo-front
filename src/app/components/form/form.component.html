@@ -25,7 +25,7 @@
       </span>
   
       <section class="two-buttons-row">
-        <p-button (click)="advanced = !advanced" label="Avançado"></p-button>
+        <p-button (click)="advanced = !advanced" label="{{ modo() }}"></p-button>
         <button pButton type="button" label="Analisar" (click)="submitForTweetAnalysis()" class="p-button-success"></button>
       </section>
     </section>

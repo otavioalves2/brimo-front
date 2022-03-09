@@ -204,6 +204,10 @@ export class FormBeginnerComponent implements OnInit {
     }
   }
 
+  modo(){
+    return this.advanced ? 'Básico' : 'Avançado';
+  }
+
   updateChartOptionsPol() {
     this.chartOptionsPol = this.configPol && this.configPol.dark ? this.getDarkThemePol() : this.getLightThemePol();
   }
@@ -284,8 +288,8 @@ export class FormBeginnerComponent implements OnInit {
           "tristeza": responseClassifyJson[5],
           "surpresa": responseClassifyJson[6],
           "confianca": responseClassifyJson[7],
-          "positivo": responseClassifyJson[8],
-          "negativo": responseClassifyJson[9]
+          "negativo": responseClassifyJson[8],
+          "positivo": responseClassifyJson[9]
         }
         let total = emotions.nojo + emotions.raiva + emotions.alegria + emotions.tristeza + emotions.surpresa + emotions.medo
         emotions.nojo = emotions.nojo > 0 ? ((emotions.nojo * 100) / total) / 100 : 0
@@ -401,8 +405,8 @@ export class FormBeginnerComponent implements OnInit {
         "tristeza": responseClassifyJson[5],
         "surpresa": responseClassifyJson[6],
         "confianca": responseClassifyJson[7],
-        "positivo": responseClassifyJson[8],
-        "negativo": responseClassifyJson[9]
+        "negativo": responseClassifyJson[8],
+        "positivo": responseClassifyJson[9]
       }
       let total = emotions.nojo + emotions.raiva + emotions.alegria + emotions.tristeza + emotions.surpresa + emotions.medo
       emotions.nojo = emotions.nojo > 0 ? ((emotions.nojo * 100) / total) / 100 : 0
